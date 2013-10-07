@@ -10,9 +10,9 @@ and optional syntax checking via [Syntastic][]. If you need a REPL I recommend u
 ## Installation
 
 I recommend using [Pathogen][] for installation. Simply clone
-this repo into your `~/.vim/bundles` directory and you are ready to go.
+this repo into your `~/.vim/bundle` directory and you are ready to go.
 
-    cd ~/.vim/bundles
+    cd ~/.vim/bundle
     git clone https://github.com/idris-hackers/idris-vim.git
 
 ### Manual Installation
