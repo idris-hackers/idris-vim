@@ -26,9 +26,17 @@ Be sure that the following lines are in your
     syntax on
     filetype on
     filetype plugin indent on
+    
+## Features
+
+Apart from syntax highlighting and indentation idris-vim offers some neat interactive
+editing features. For more information on how to use it, read this blog article
+by Edwin Brady on [Interactive Idris editing with vim][].
 
 
 [Idris]: http://www.idris-lang.org
 [Syntastic]: https://github.com/scrooloose/syntastic
 [Vimshell]: https://github.com/Shougo/vimshell.vim
 [Pathogen]: https://github.com/tpope/vim-pathogen
+[Interactive Idris editing with vim]: http://edwinb.wordpress.com/2013/10/28/interactive-idris-editing-with-vim/
+
