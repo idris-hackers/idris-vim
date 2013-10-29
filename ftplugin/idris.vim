@@ -8,11 +8,15 @@ endif
 
 let b:did_ftplugin = 1
 
-function IdrisReload()
+function IdrisReload(q)
   let file = expand("%")
   let tc = system("idris --client :l " . file)
   if (! (tc is ""))
     echo tc
+  else
+    if (a:q==0)
+       echo "Successfully reloaded " . file
+    endif
   endif
   return tc
 endfunction
@@ -20,7 +24,7 @@ endfunction
 function IdrisShowType()
   w
   let word = expand("<cword>")
-  let tc = IdrisReload()
+  let tc = IdrisReload(1)
   if (! (tc is ""))
     echo tc
   else
@@ -35,7 +39,7 @@ function IdrisCaseSplit()
   w
   let cline = line(".")
   let word = expand("<cword>")
-  let tc = IdrisReload()
+  let tc = IdrisReload(1)
 
   if (tc is "")
     let fn = "idris --client :cs! " . cline . " " . word
@@ -54,7 +58,7 @@ function IdrisMakeWith()
   w
   let cline = line(".")
   let word = expand("<cword>")
-  let tc = IdrisReload()
+  let tc = IdrisReload(1)
 
   if (tc is "")
     let fn = "idris --client :mw! " . cline . " " . word
@@ -74,7 +78,7 @@ function IdrisAddClause()
   w
   let cline = line(".")
   let word = expand("<cword>")
-  let tc = IdrisReload()
+  let tc = IdrisReload(1)
 
   if (tc is "")
     let fn = "idris --client :ac! " . cline . " " . word
@@ -91,7 +95,7 @@ function IdrisAddClause()
 endfunction
 
 function IdrisEval()
-  let tc = IdrisReload()
+  let tc = IdrisReload(1)
   if (tc is "")
      let expr = input ("Expression: ")
      let fn = "idris --client '" . expr . "'"
@@ -102,7 +106,7 @@ function IdrisEval()
 endfunction
 
 map <LocalLeader>t :call IdrisShowType()<ENTER>
-map <LocalLeader>r :call IdrisReload()<ENTER>
+map <LocalLeader>r :call IdrisReload(0)<ENTER>
 map <LocalLeader>c :call IdrisCaseSplit()<ENTER>
 map <LocalLeader>d ?:<ENTER>b:call IdrisAddClause()<ENTER>w
 map <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
