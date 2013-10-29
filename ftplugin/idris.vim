@@ -9,7 +9,8 @@ endif
 let b:did_ftplugin = 1
 
 function IdrisReload()
-  let tc = system("idris --client :r")
+  let file = expand("%")
+  let tc = system("idris --client :l " . file)
   if (! (tc is ""))
     echo tc
   endif
