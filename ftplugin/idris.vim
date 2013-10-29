@@ -8,7 +8,7 @@ endif
 
 let b:did_ftplugin = 1
 
-function IdrisReload(q)
+function! IdrisReload(q)
   let file = expand("%")
   let tc = system("idris --client :l " . file)
   if (! (tc is ""))
@@ -21,7 +21,7 @@ function IdrisReload(q)
   return tc
 endfunction
 
-function IdrisShowType()
+function! IdrisShowType()
   w
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -34,7 +34,7 @@ function IdrisShowType()
   return tc
 endfunction
 
-function IdrisCaseSplit()
+function! IdrisCaseSplit()
   let view = winsaveview()
   w
   let cline = line(".")
@@ -53,7 +53,7 @@ function IdrisCaseSplit()
   endif
 endfunction
 
-function IdrisMakeWith()
+function! IdrisMakeWith()
   let view = winsaveview()
   w
   let cline = line(".")
@@ -73,7 +73,7 @@ function IdrisMakeWith()
   endif
 endfunction
 
-function IdrisAddClause()
+function! IdrisAddClause()
   let view = winsaveview()
   w
   let cline = line(".")
@@ -94,7 +94,7 @@ function IdrisAddClause()
   endif
 endfunction
 
-function IdrisEval()
+function! IdrisEval()
   let tc = IdrisReload(1)
   if (tc is "")
      let expr = input ("Expression: ")
