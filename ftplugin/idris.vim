@@ -119,7 +119,7 @@ function! IdrisEval()
      let expr = input ("Expression: ")
      let fn = "idris --client '" . expr . "'"
      let result = system(fn)
-     echo result
+     echo " = " . result
   endif
   echo ""
 endfunction
