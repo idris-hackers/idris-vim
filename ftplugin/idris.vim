@@ -2,17 +2,42 @@ setlocal shiftwidth=2
 setlocal tabstop=2
 setlocal expandtab
 
+let idris_response=0
+
 if exists("b:did_ftplugin")
   finish
 endif
 
 let b:did_ftplugin = 1
 
+function! IdrisResponseWin()
+  if (!bufexists("idris-response"))
+    10split
+    badd idris-response
+    b idris-response
+    let b:respwin = winnr()
+    set buftype=nofile
+    wincmd j
+  endif
+endfunction
+
+function! IWrite(str)
+  if (bufexists("idris-response"))
+    b idris-response
+    %delete
+    let resp = split(a:str, '\n')
+    call append(1, resp)
+    b #
+  else
+    echo a:str
+  endif
+endfunction
+
 function! IdrisReload(q)
   let file = expand("%")
   let tc = system("idris --client :l " . file)
   if (! (tc is ""))
-    echo tc
+    call IWrite(tc)
   else
     if (a:q==0)
        echo "Successfully reloaded " . file
@@ -29,7 +54,7 @@ function! IdrisShowType()
     echo tc
   else
     let ty = system("idris --client :t " . word)
-    echo ty
+    call IWrite(ty)
   endif
   return tc
 endfunction
@@ -51,7 +76,7 @@ function! IdrisProofSearch(hint)
     let fn = "idris --client :ps! " . cline . " " . word . " " . hints
     let result = system(fn)
     if (! (result is ""))
-       echo result
+       call IWrite(result)
     else
       e
       call winrestview(view)
@@ -70,7 +95,7 @@ function! IdrisAddMissing()
     let fn = "idris --client :am! " . cline . " " . word
     let result = system(fn)
     if (! (result is ""))
-       echo result
+       call IWrite(result)
     else
       e
       call winrestview(view)
@@ -89,7 +114,7 @@ function! IdrisCaseSplit()
     let fn = "idris --client :cs! " . cline . " " . word
     let result = system(fn)
     if (! (result is ""))
-       echo result
+       call IWrite(result)
     else
       e
       call winrestview(view)
@@ -108,7 +133,7 @@ function! IdrisMakeWith()
     let fn = "idris --client :mw! " . cline . " " . word
     let result = system(fn)
     if (! (result is ""))
-       echo result
+       call IWrite(result)
     else
       e
       call winrestview(view)
@@ -128,7 +153,7 @@ function! IdrisAddClause()
     let fn = "idris --client :ac! " . cline . " " . word
     let result = system(fn)
     if (! (result is ""))
-       echo result
+       call IWrite(result)
     else
       e
       call winrestview(view)
@@ -144,9 +169,8 @@ function! IdrisEval()
      let expr = input ("Expression: ")
      let fn = "idris --client '" . expr . "'"
      let result = system(fn)
-     echo result
+     call IWrite(result)
   endif
-  echo ""
 endfunction
 
 map <LocalLeader>t :call IdrisShowType()<ENTER>
@@ -158,3 +182,4 @@ map <LocalLeader>o :call IdrisProofSearch(0)<ENTER>
 map <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
 map <LocalLeader>e :call IdrisEval()<ENTER>
 map <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
+map <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
