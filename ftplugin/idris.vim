@@ -34,15 +34,21 @@ function! IdrisShowType()
   return tc
 endfunction
 
-function! IdrisProofSearch()
+function! IdrisProofSearch(hint)
   let view = winsaveview()
   w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
 
+  if (a:hint==0)
+     let hints = ""
+  else
+     let hints = input ("Hints: ")
+  endif
+
   if (tc is "")
-    let fn = "idris --client :ps! " . cline . " " . word
+    let fn = "idris --client :ps! " . cline . " " . word . " " . hints
     let result = system(fn)
     if (! (result is ""))
        echo result
@@ -148,6 +154,7 @@ map <LocalLeader>r :call IdrisReload(0)<ENTER>
 map <LocalLeader>c :call IdrisCaseSplit()<ENTER>
 map <LocalLeader>d ?:<ENTER>b:call IdrisAddClause()<ENTER>w
 map <LocalLeader>m :call IdrisAddMissing()<ENTER>
-map <LocalLeader>o :call IdrisProofSearch()<ENTER>
+map <LocalLeader>o :call IdrisProofSearch(0)<ENTER>
+map <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
 map <LocalLeader>e :call IdrisEval()<ENTER>
 map <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
