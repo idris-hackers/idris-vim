@@ -142,7 +142,7 @@ function! IdrisMakeWith()
   endif
 endfunction
 
-function! IdrisAddClause()
+function! IdrisAddClause(proof)
   let view = winsaveview()
   w
   let cline = line(".")
@@ -150,7 +150,12 @@ function! IdrisAddClause()
   let tc = IdrisReload(1)
 
   if (tc is "")
-    let fn = "idris --client :ac! " . cline . " " . word
+    if (a:proof==0)
+      let fn = "idris --client :ac! " . cline . " " . word
+    else
+      let fn = "idris --client :apc! " . cline . " " . word
+    endif
+
     let result = system(fn)
     if (! (result is ""))
        call IWrite(result)
@@ -176,8 +181,9 @@ endfunction
 map <LocalLeader>t :call IdrisShowType()<ENTER>
 map <LocalLeader>r :call IdrisReload(0)<ENTER>
 map <LocalLeader>c :call IdrisCaseSplit()<ENTER>
-map <LocalLeader>d 0/:<ENTER>b:call IdrisAddClause()<ENTER>w
+map <LocalLeader>d 0/:<ENTER>b:call IdrisAddClause(0)<ENTER>w
 map <LocalLeader>m :call IdrisAddMissing()<ENTER>
+map <LocalLeader>md 0/:<ENTER>b:call IdrisAddClause(1)<ENTER>w
 map <LocalLeader>o :call IdrisProofSearch(0)<ENTER>
 map <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
 map <LocalLeader>e :call IdrisEval()<ENTER>
