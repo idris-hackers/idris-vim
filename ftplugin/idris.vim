@@ -189,3 +189,15 @@ map <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
 map <LocalLeader>e :call IdrisEval()<ENTER>
 map <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
 map <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
+
+menu Idris.Reload <LocalLeader>r
+menu Idris.Show\ Type <LocalLeader>t
+menu Idris.Evaluate <LocalLeader>e
+menu Idris.-SEP0- :
+menu Idris.Add\ Clause <LocalLeader>d
+menu Idris.Add\ with <LocalLeader>w
+menu Idris.Case\ Split <LocalLeader>c
+menu Idris.Add\ missing\ cases <LocalLeader>m
+menu Idris.Proof\ Search <LocalLeader>o
+menu Idris.Proof\ Search\ with\ hints <LocalLeader>p
+
