@@ -176,7 +176,7 @@ endfunction
 map <LocalLeader>t :call IdrisShowType()<ENTER>
 map <LocalLeader>r :call IdrisReload(0)<ENTER>
 map <LocalLeader>c :call IdrisCaseSplit()<ENTER>
-map <LocalLeader>d ?:<ENTER>b:call IdrisAddClause()<ENTER>w
+map <LocalLeader>d 0/:<ENTER>b:call IdrisAddClause()<ENTER>w
 map <LocalLeader>m :call IdrisAddMissing()<ENTER>
 map <LocalLeader>o :call IdrisProofSearch(0)<ENTER>
 map <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
