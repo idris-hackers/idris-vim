@@ -23,13 +23,8 @@ if !exists("g:syntastic_idris_options")
     let g:syntastic_idris_options = " "
 endif
 
-
-function! SyntaxCheckers_idris_idris_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-        \ 'exe': 'idris',
-        \ 'args': '--check '. g:syntastic_idris_options,
-        \ 'filetype': 'idris',
-        \ 'subchecker': 'idris' })
+function! SyntaxCheckers_idris_idris_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'args': '--check ' . g:syntastic_idris_options })
 
     let errorformat =
         \ '"%f" (line %l\, column %c\):,' .
