@@ -29,7 +29,7 @@ function! IWrite(str)
     call append(1, resp)
     b #
   else
-    echo a:str
+    echo "\n" . a:str
   endif
 endfunction
 
