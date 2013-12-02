@@ -24,8 +24,8 @@ if !exists("g:syntastic_idris_options")
 endif
 
 
-function! SyntaxCheckers_idris_idris_GetLocList()
-    let makeprg = syntastic#makeprg#build({
+function! SyntaxCheckers_idris_idris_GetLocList() dict
+    let makeprg = self.makeprgBuild({
         \ 'exe': 'idris',
         \ 'args': '--check '. g:syntastic_idris_options,
         \ 'filetype': 'idris',
