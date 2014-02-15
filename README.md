@@ -26,12 +26,27 @@ Be sure that the following lines are in your
     syntax on
     filetype on
     filetype plugin indent on
-    
+
 ## Features
 
 Apart from syntax highlighting and indentation idris-vim offers some neat interactive
 editing features. For more information on how to use it, read this blog article
 by Edwin Brady on [Interactive Idris editing with vim][].
+
+## Interactive Editing Commands
+
+[Idris][] mode for vim offers interactive editing capabilities, the following
+commands are supported.
+
+`<LocalLeader>r` reload file
+`<LocalLeader>t` show type
+`<LocalLeader>d` add clause
+`<LocalLeader>c` case split
+`<LocalLeader>w` add with clause
+`<LocalLeader>e` evaluate expression
+`<LocalLeader>m` add missing clause
+`<LocalLeader>p` proof search
+`<LocalLeader>i` open idris response window
 
 
 [Idris]: http://www.idris-lang.org
