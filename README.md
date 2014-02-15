@@ -39,13 +39,21 @@ by Edwin Brady on [Interactive Idris editing with vim][].
 commands are supported.
 
 `<LocalLeader>r` reload file
+
 `<LocalLeader>t` show type
+
 `<LocalLeader>d` add clause
+
 `<LocalLeader>c` case split
+
 `<LocalLeader>w` add with clause
+
 `<LocalLeader>e` evaluate expression
+
 `<LocalLeader>m` add missing clause
+
 `<LocalLeader>p` proof search
+
 `<LocalLeader>i` open idris response window
 
 
