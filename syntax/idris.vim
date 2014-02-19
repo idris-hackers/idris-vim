@@ -4,7 +4,7 @@
 " highlighter to support idris.
 "
 " author: raichoo (raichoo@googlemail.com)
-" date: Feb 14 2014
+" date: Feb 19 2014
 
 syn match idrisModule "\<\(module\|namespace\)\>"
 syn match idrisImport "\<import\>"
@@ -26,7 +26,7 @@ syn match idrisType "\<\([A-Z][a-zA-Z0-9_]*\|_|_\)\>"
 syn match idrisLineComment "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$"
 syn match idrisMetaVar "?[a-z][A-Za-z0-9_]\+'*"
 syn match idrisLink "%\(lib\|link\|include\)"
-syn match idrisDirective "%\(access\|default\|assert_total\|name\|elim\)"
+syn match idrisDirective "%\(access\|default\|assert_total\|name\|elim\|error_reverse\|reflection\)"
 syn match idrisDSL "\(lambda\|variable\|\index_first\|index_next\)"
 syn match idrisChar "'[^'\\]'\|'\\.'\|'\\u[0-9a-fA-F]\{4}'"
 syn match idrisBacktick "`[A-Za-z][A-Za-z0-9_]*`"
