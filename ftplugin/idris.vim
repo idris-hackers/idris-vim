@@ -174,7 +174,7 @@ function! IdrisEval()
      let expr = input ("Expression: ")
      let fn = "idris --client '" . expr . "'"
      let result = system(fn)
-     call IWrite(result)
+     call IWrite(" = " . result)
   endif
 endfunction
 
