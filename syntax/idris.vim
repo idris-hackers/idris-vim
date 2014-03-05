@@ -24,6 +24,7 @@ syn match idrisInfix "\<\(prefix\|infix\|infixl\|infixr\)\>"
 syn match idrisOperators "\([-!#$%&\*\+./<=>\?@\\^|~:]\|\<_\>\)"
 syn match idrisType "\<\([A-Z][a-zA-Z0-9_]*\|_|_\)\>"
 syn match idrisLineComment "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$"
+syn match idrisDocComment "|||\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$"
 syn match idrisMetaVar "?[a-z][A-Za-z0-9_]\+'*"
 syn match idrisLink "%\(lib\|link\|include\)"
 syn match idrisDirective "%\(access\|assert_total\|default\|elim\|error_reverse\|hide\|name\|reflection\)"
@@ -55,6 +56,7 @@ highlight def link idrisDelimiter Delimiter
 highlight def link idrisInfix PreProc
 highlight def link idrisOperators Operator
 highlight def link idrisType Include
+highlight def link idrisDocComment Comment
 highlight def link idrisLineComment Comment
 highlight def link idrisBlockComment Comment
 highlight def link idrisMetaVar Identifier
