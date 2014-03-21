@@ -62,6 +62,8 @@ function! GetIdrisIndent()
 
   if prevline =~ '\s\+(\s*.\+\s\+:\s\+.\+\s*)\s\+->\s*$'
     return match(prevline, '(')
+  elseif prevline =~ '\s\+{\s*.\+\s\+:\s\+.\+\s*}\s\+->\s*$'
+    return match(prevline, '{')
   endif
 
   if prevline =~ '[!#$%&*+./<>?@\\^|~-]\s*$'
