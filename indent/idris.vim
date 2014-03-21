@@ -25,8 +25,8 @@ endif
 
 if !exists('g:idris_indent_case')
   " case xs of
-  " >>>>>[] -> ...
-  " >>>>>(y::ys) -> ...
+  " >>>>>[]      => ...
+  " >>>>>(y::ys) => ...
   let g:idris_indent_case = 5
 endif
 
@@ -38,7 +38,7 @@ endif
 
 if !exists('g:idris_indent_rewrite')
   " rewrite prf in expr
-  " >>>>x
+  " >>>>>>>>x
   let g:idris_indent_rewrite = 8
 endif
 
