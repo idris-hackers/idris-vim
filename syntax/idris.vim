@@ -4,7 +4,7 @@
 " highlighter to support idris.
 "
 " author: raichoo (raichoo@googlemail.com)
-" date: Feb 19 2014
+" date: Mar 24 2014
 
 syn match idrisModule "\<\(module\|namespace\)\>"
 syn match idrisImport "\<import\>"
@@ -12,7 +12,7 @@ syn match idrisRefl "\<refl\>"
 syn match idrisStructure "\<\(class\|\(co\)\?data\|instance\|where\|record\|dsl\)\>"
 syn match idrisVisibility "\<\(public\|abstract\|private\)\>"
 syn match idrisBlock "\<\(parameters\|mutual\|postulate\|using\)\>"
-syn match idrisAnnotation "\<\(total\|partial\|auto\|impossible\|static\|implicit\)\>"
+syn match idrisAnnotation "\<\(total\|partial\|covering\|auto\|impossible\|static\|implicit\)\>"
 syn match idrisStatement "\<\(do\|case\|of\|rewrite\|let\|in\|with\)\>"
 syn match idrisSyntax "\(pattern \+\|term \+\)\?syntax"
 syn match idrisConditional "\<\(if\|then\|else\)\>"
