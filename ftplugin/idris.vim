@@ -84,6 +84,27 @@ function! IdrisProofSearch(hint)
   endif
 endfunction
 
+function! IdrisRefine()
+  let view = winsaveview()
+  w
+  let cline = line(".")
+  let word = expand("<cword>")
+  let tc = IdrisReload(1)
+
+  let name = input ("Name: ")
+
+  if (tc is "")
+    let fn = "idris --client :ref! " . cline . " " . word . " " . name
+    let result = system(fn)
+    if (! (result is ""))
+       call IWrite(result)
+    else
+      e
+      call winrestview(view)
+    endif
+  endif
+endfunction
+
 function! IdrisAddMissing()
   let view = winsaveview()
   w
@@ -184,6 +205,7 @@ map <LocalLeader>c :call IdrisCaseSplit()<ENTER>
 map <LocalLeader>d 0/:<ENTER>b:call IdrisAddClause(0)<ENTER>w
 map <LocalLeader>m :call IdrisAddMissing()<ENTER>
 map <LocalLeader>md 0/:<ENTER>b:call IdrisAddClause(1)<ENTER>w
+map <LocalLeader>f :call IdrisRefine()<ENTER>
 map <LocalLeader>o :call IdrisProofSearch(0)<ENTER>
 map <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
 map <LocalLeader>e :call IdrisEval()<ENTER>
