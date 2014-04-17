@@ -4,7 +4,7 @@
 " highlighter to support idris.
 "
 " author: raichoo (raichoo@googlemail.com)
-" date: Feb 19 2014
+" date: Apr 16 2014
 
 syn match idrisModule "\<\(module\|namespace\)\>"
 syn match idrisImport "\<import\>"
@@ -12,7 +12,7 @@ syn match idrisRefl "\<refl\>"
 syn match idrisStructure "\<\(class\|\(co\)\?data\|instance\|where\|record\|dsl\)\>"
 syn match idrisVisibility "\<\(public\|abstract\|private\)\>"
 syn match idrisBlock "\<\(parameters\|mutual\|postulate\|using\)\>"
-syn match idrisAnnotation "\<\(total\|partial\|auto\|impossible\|static\|implicit\)\>"
+syn match idrisAnnotation "\<\(total\|partial\|covering\|auto\|impossible\|static\|implicit\)\>"
 syn match idrisStatement "\<\(do\|case\|of\|rewrite\|let\|in\|with\)\>"
 syn match idrisSyntax "\(pattern \+\|term \+\)\?syntax"
 syn match idrisConditional "\<\(if\|then\|else\)\>"
@@ -27,7 +27,7 @@ syn match idrisLineComment "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$"
 syn match idrisDocComment "|||\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$"
 syn match idrisMetaVar "?[a-z][A-Za-z0-9_]\+'*"
 syn match idrisLink "%\(lib\|link\|include\)"
-syn match idrisDirective "%\(access\|assert_total\|default\|elim\|error_reverse\|hide\|name\|reflection\)"
+syn match idrisDirective "%\(access\|assert_total\|default\|elim\|error_reverse\|hide\|name\|reflection\|error_handlers\|language\|flag\|dynamic\|provide\)"
 syn match idrisDSL "\(lambda\|variable\|\index_first\|index_next\)"
 syn match idrisChar "'[^'\\]'\|'\\.'\|'\\u[0-9a-fA-F]\{4}'"
 syn match idrisBacktick "`[A-Za-z][A-Za-z0-9_]*`"

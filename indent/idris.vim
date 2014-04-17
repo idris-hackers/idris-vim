@@ -3,7 +3,7 @@
 " Based on haskell indentation by motemen <motemen@gmail.com>
 "
 " author: raichoo (raichoo@googlemail.com)
-" date: Mar 19 2014
+" date: Mar 21 2014
 "
 " Modify g:idris_indent_if and g:idris_indent_case to
 " change indentation for `if'(default 3) and `case'(default 5).
@@ -25,8 +25,8 @@ endif
 
 if !exists('g:idris_indent_case')
   " case xs of
-  " >>>>>[] -> ...
-  " >>>>>(y::ys) -> ...
+  " >>>>>[]      => ...
+  " >>>>>(y::ys) => ...
   let g:idris_indent_case = 5
 endif
 
@@ -38,7 +38,7 @@ endif
 
 if !exists('g:idris_indent_rewrite')
   " rewrite prf in expr
-  " >>>>x
+  " >>>>>>>>x
   let g:idris_indent_rewrite = 8
 endif
 
@@ -62,6 +62,8 @@ function! GetIdrisIndent()
 
   if prevline =~ '\s\+(\s*.\+\s\+:\s\+.\+\s*)\s\+->\s*$'
     return match(prevline, '(')
+  elseif prevline =~ '\s\+{\s*.\+\s\+:\s\+.\+\s*}\s\+->\s*$'
+    return match(prevline, '{')
   endif
 
   if prevline =~ '[!#$%&*+./<>?@\\^|~-]\s*$'
