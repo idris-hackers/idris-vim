@@ -1,14 +1,30 @@
-setlocal shiftwidth=2
-setlocal tabstop=2
-setlocal expandtab
-
-let idris_response=0
-
 if exists("b:did_ftplugin")
   finish
 endif
 
+setlocal shiftwidth=2
+setlocal tabstop=2
+setlocal expandtab
+
+let idris_response = 0
 let b:did_ftplugin = 1
+
+function! IdrisDocFold(lineNum)
+  let line = getline(a:lineNum)
+
+  if line =~ "^\s*|||"
+    return "1"
+  endif
+
+  return "0"
+endfunction
+
+function! IdrisFold(lineNum)
+  return IdrisDocFold(a:lineNum)
+endfunction
+
+setlocal foldmethod=expr
+setlocal foldexpr=IdrisFold(v:lnum)
 
 function! IdrisResponseWin()
   if (!bufexists("idris-response"))
