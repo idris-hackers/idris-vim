@@ -35,10 +35,23 @@ function! IdrisResponseWin()
     botright 10split
     badd idris-response
     b idris-response
-    let b:respwin = winnr()
+    let g:idris_respwin = "active"
     set buftype=nofile
-    wincmd j
+    wincmd k
+  elseif (bufexists("idris-response") && g:idris_respwin == "hidden")
+    botright 10split
+    b idris-response
+    let g:idris_respwin = "active"
+    wincmd k
   endif
+endfunction
+
+function! IdrisHideResponseWin()
+  let g:idris_respwin = "hidden"
+endfunction
+
+function! IdrisShowRepsonseWin()
+  let g:idris_respwin = "active"
 endfunction
 
 function! IWrite(str)
@@ -243,3 +256,5 @@ menu Idris.Add\ missing\ cases <LocalLeader>m
 menu Idris.Proof\ Search <LocalLeader>o
 menu Idris.Proof\ Search\ with\ hints <LocalLeader>p
 
+au BufHidden idris-response call IdrisHideResponseWin()
+au BufEnter idris-response call IdrisShowRepsonseWin()
