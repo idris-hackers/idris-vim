@@ -1,3 +1,7 @@
+if bufname('%') == "idris-response"
+  finish
+endif
+
 if exists("b:did_ftplugin")
   finish
 endif
