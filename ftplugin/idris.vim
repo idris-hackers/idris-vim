@@ -32,7 +32,7 @@ setlocal foldexpr=IdrisFold(v:lnum)
 
 function! IdrisResponseWin()
   if (!bufexists("idris-response"))
-    10split
+    botright 10split
     badd idris-response
     b idris-response
     let b:respwin = winnr()
