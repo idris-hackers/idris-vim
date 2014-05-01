@@ -92,6 +92,13 @@ function! IdrisShowType()
   return tc
 endfunction
 
+function! IdrisShowDoc()
+  w
+  let word = expand("<cword>")
+  let ty = system("idris --client :doc " . word)
+  call IWrite(ty)
+endfunction
+
 function! IdrisProofSearch(hint)
   let view = winsaveview()
   w
@@ -244,6 +251,7 @@ map <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
 map <LocalLeader>e :call IdrisEval()<ENTER>
 map <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
 map <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
+map <LocalLeader>h :call IdrisShowDoc()<ENTER>
 
 menu Idris.Reload <LocalLeader>r
 menu Idris.Show\ Type <LocalLeader>t
