@@ -1,24 +1,58 @@
-setlocal shiftwidth=2
-setlocal tabstop=2
-setlocal expandtab
-
-let idris_response=0
+if bufname('%') == "idris-response"
+  finish
+endif
 
 if exists("b:did_ftplugin")
   finish
 endif
 
+setlocal shiftwidth=2
+setlocal tabstop=2
+setlocal expandtab
+setlocal comments=s1:{-,mb:-,ex:-},:\|\|\|,:--
+
+let idris_response = 0
 let b:did_ftplugin = 1
+
+function! IdrisDocFold(lineNum)
+  let line = getline(a:lineNum)
+
+  if line =~ "^\s*|||"
+    return "1"
+  endif
+
+  return "0"
+endfunction
+
+function! IdrisFold(lineNum)
+  return IdrisDocFold(a:lineNum)
+endfunction
+
+setlocal foldmethod=expr
+setlocal foldexpr=IdrisFold(v:lnum)
 
 function! IdrisResponseWin()
   if (!bufexists("idris-response"))
-    10split
+    botright 10split
     badd idris-response
     b idris-response
-    let b:respwin = winnr()
+    let g:idris_respwin = "active"
     set buftype=nofile
-    wincmd j
+    wincmd k
+  elseif (bufexists("idris-response") && g:idris_respwin == "hidden")
+    botright 10split
+    b idris-response
+    let g:idris_respwin = "active"
+    wincmd k
   endif
+endfunction
+
+function! IdrisHideResponseWin()
+  let g:idris_respwin = "hidden"
+endfunction
+
+function! IdrisShowRepsonseWin()
+  let g:idris_respwin = "active"
 endfunction
 
 function! IWrite(str)
@@ -34,7 +68,7 @@ function! IWrite(str)
 endfunction
 
 function! IdrisReload(q)
-  let file = expand("%")
+  let file = expand("%:p")
   let tc = system("idris --client :l " . file)
   if (! (tc is ""))
     call IWrite(tc)
@@ -57,6 +91,13 @@ function! IdrisShowType()
     call IWrite(ty)
   endif
   return tc
+endfunction
+
+function! IdrisShowDoc()
+  w
+  let word = expand("<cword>")
+  let ty = system("idris --client :doc " . word)
+  call IWrite(ty)
 endfunction
 
 function! IdrisProofSearch(hint)
@@ -231,6 +272,7 @@ map <LocalLeader>l :call IdrisMakeLemma()<ENTER>
 map <LocalLeader>e :call IdrisEval()<ENTER>
 map <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
 map <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
+map <LocalLeader>h :call IdrisShowDoc()<ENTER>
 
 menu Idris.Reload <LocalLeader>r
 menu Idris.Show\ Type <LocalLeader>t
@@ -243,3 +285,5 @@ menu Idris.Add\ missing\ cases <LocalLeader>m
 menu Idris.Proof\ Search <LocalLeader>o
 menu Idris.Proof\ Search\ with\ hints <LocalLeader>p
 
+au BufHidden idris-response call IdrisHideResponseWin()
+au BufEnter idris-response call IdrisShowRepsonseWin()

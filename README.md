@@ -56,6 +56,8 @@ commands are supported.
 
 `<LocalLeader>i` open idris response window
 
+`<LocalLeader>h` show documentation
+
 
 [Idris]: http://www.idris-lang.org
 [Syntastic]: https://github.com/scrooloose/syntastic
