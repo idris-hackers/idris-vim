@@ -140,6 +140,7 @@ function! IdrisMakeLemma()
     else
       e
       call winrestview(view)
+      call search(word, "b")
     endif
   endif
 endfunction
