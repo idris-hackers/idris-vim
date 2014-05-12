@@ -264,6 +264,7 @@ map <LocalLeader>t :call IdrisShowType()<ENTER>
 map <LocalLeader>r :call IdrisReload(0)<ENTER>
 map <LocalLeader>c :call IdrisCaseSplit()<ENTER>
 map <LocalLeader>d 0/:<ENTER>b:call IdrisAddClause(0)<ENTER>w
+map <LocalLeader>b 0w:call IdrisAddClause(0)<ENTER>
 map <LocalLeader>m :call IdrisAddMissing()<ENTER>
 map <LocalLeader>md 0/:<ENTER>b:call IdrisAddClause(1)<ENTER>w
 map <LocalLeader>f :call IdrisRefine()<ENTER>
