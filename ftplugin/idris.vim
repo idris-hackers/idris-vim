@@ -76,6 +76,7 @@ function! IdrisReload(q)
   else
     if (a:q==0)
        echo "Successfully reloaded " . file
+       call IWrite("")
     endif
   endif
   return tc
