@@ -68,6 +68,7 @@ function! IWrite(str)
 endfunction
 
 function! IdrisReload(q)
+  w
   let file = expand("%:p")
   let tc = system("idris --client ':l " . file . "'")
   if (! (tc is ""))
