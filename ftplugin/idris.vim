@@ -69,7 +69,7 @@ endfunction
 
 function! IdrisReload(q)
   let file = expand("%:p")
-  let tc = system("idris --client :l " . file)
+  let tc = system("idris --client ':l " . file . "'")
   if (! (tc is ""))
     call IWrite(tc)
   else
@@ -87,7 +87,7 @@ function! IdrisShowType()
   if (! (tc is ""))
     echo tc
   else
-    let ty = system("idris --client :t " . word)
+    let ty = system("idris --client ':t " . word . "'")
     call IWrite(ty)
   endif
   return tc
@@ -96,7 +96,7 @@ endfunction
 function! IdrisShowDoc()
   w
   let word = expand("<cword>")
-  let ty = system("idris --client :doc " . word)
+  let ty = system("idris --client ':doc " . word . "'")
   call IWrite(ty)
 endfunction
 
@@ -114,7 +114,7 @@ function! IdrisProofSearch(hint)
   endif
 
   if (tc is "")
-    let fn = "idris --client :ps! " . cline . " " . word . " " . hints
+    let fn = "idris --client ':ps! " . cline . " " . word . " " . hints . "'"
     let result = system(fn)
     if (! (result is ""))
        call IWrite(result)
@@ -133,7 +133,7 @@ function! IdrisMakeLemma()
   let tc = IdrisReload(1)
 
   if (tc is "")
-    let fn = "idris --client :ml! " . cline . " " . word
+    let fn = "idris --client ':ml! " . cline . " " . word . "'"
     let result = system(fn)
     if (! (result is ""))
        call IWrite(result)
@@ -155,7 +155,7 @@ function! IdrisRefine()
   let name = input ("Name: ")
 
   if (tc is "")
-    let fn = "idris --client :ref! " . cline . " " . word . " " . name
+    let fn = "idris --client ':ref! " . cline . " " . word . " " . name . "'"
     let result = system(fn)
     if (! (result is ""))
        call IWrite(result)
@@ -174,7 +174,7 @@ function! IdrisAddMissing()
   let tc = IdrisReload(1)
 
   if (tc is "")
-    let fn = "idris --client :am! " . cline . " " . word
+    let fn = "idris --client ':am! " . cline . " " . word . "'"
     let result = system(fn)
     if (! (result is ""))
        call IWrite(result)
@@ -193,7 +193,7 @@ function! IdrisCaseSplit()
   let tc = IdrisReload(1)
 
   if (tc is "")
-    let fn = "idris --client :cs! " . cline . " " . word
+    let fn = "idris --client ':cs! " . cline . " " . word . "'"
     let result = system(fn)
     if (! (result is ""))
        call IWrite(result)
@@ -212,7 +212,7 @@ function! IdrisMakeWith()
   let tc = IdrisReload(1)
 
   if (tc is "")
-    let fn = "idris --client :mw! " . cline . " " . word
+    let fn = "idris --client ':mw! " . cline . " " . word . "'"
     let result = system(fn)
     if (! (result is ""))
        call IWrite(result)
@@ -233,9 +233,9 @@ function! IdrisAddClause(proof)
 
   if (tc is "")
     if (a:proof==0)
-      let fn = "idris --client :ac! " . cline . " " . word
+      let fn = "idris --client ':ac! " . cline . " " . word . "'"
     else
-      let fn = "idris --client :apc! " . cline . " " . word
+      let fn = "idris --client ':apc! " . cline . " " . word . "'"
     endif
 
     let result = system(fn)
