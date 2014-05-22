@@ -82,10 +82,21 @@ function! IdrisReload(q)
   return tc
 endfunction
 
+function! IdrisReloadToLine(cline)
+  w
+  let file = expand("%:p")
+  let tc = system("idris --client ':lto " . a:cline . " " . file . "'")
+  if (! (tc is ""))
+    call IWrite(tc)
+  endif
+  return tc
+endfunction
+
 function! IdrisShowType()
   w
   let word = expand("<cword>")
-  let tc = IdrisReload(1)
+  let cline = line(".")
+  let tc = IdrisReloadToLine(cline)
   if (! (tc is ""))
     echo tc
   else
@@ -107,7 +118,7 @@ function! IdrisProofSearch(hint)
   w
   let cline = line(".")
   let word = expand("<cword>")
-  let tc = IdrisReload(1)
+  let tc = IdrisReloadToLine(cline)
 
   if (a:hint==0)
      let hints = ""
@@ -192,7 +203,7 @@ function! IdrisCaseSplit()
   w
   let cline = line(".")
   let word = expand("<cword>")
-  let tc = IdrisReload(1)
+  let tc = IdrisReloadToLine(cline)
 
   if (tc is "")
     let fn = "idris --client ':cs! " . cline . " " . word . "'"
@@ -231,7 +242,7 @@ function! IdrisAddClause(proof)
   w
   let cline = line(".")
   let word = expand("<cword>")
-  let tc = IdrisReload(1)
+  let tc = IdrisReloadToLine(cline)
 
   if (tc is "")
     if (a:proof==0)
