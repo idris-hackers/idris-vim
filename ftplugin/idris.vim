@@ -118,7 +118,7 @@ function! IdrisProofSearch(hint)
   w
   let cline = line(".")
   let word = expand("<cword>")
-  let tc = IdrisReloadToLine(cline)
+  let tc = IdrisReload(1)
 
   if (a:hint==0)
      let hints = ""
