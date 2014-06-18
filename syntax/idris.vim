@@ -4,7 +4,13 @@
 " highlighter to support idris.
 "
 " author: raichoo (raichoo@googlemail.com)
-" date: Apr 16 2014
+" date: Jun 18 2014
+
+if version < 600
+  syn clear
+elseif exists("b:current_syntax")
+  finish
+endif
 
 syn match idrisModule "\<\(module\|namespace\)\>"
 syn match idrisImport "\<import\>"
@@ -65,3 +71,5 @@ highlight def link idrisMetaVar Identifier
 highlight def link idrisString String
 highlight def link idrisChar String
 highlight def link idrisBacktick Operator
+
+let b:current_syntax = "idris"

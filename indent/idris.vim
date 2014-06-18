@@ -3,7 +3,7 @@
 " Based on haskell indentation by motemen <motemen@gmail.com>
 "
 " author: raichoo (raichoo@googlemail.com)
-" date: Mar 21 2014
+" date: Jun 18 2014
 "
 " Modify g:idris_indent_if and g:idris_indent_case to
 " change indentation for `if'(default 3) and `case'(default 5).
@@ -80,11 +80,11 @@ function! GetIdrisIndent()
   endif
 
   if prevline =~ '\<let\>\s\+.\+\<in\>\s*$'
-    return match(prevline, 'let') + g:idris_indent_let
+    return match(prevline, '\<let\>') + g:idris_indent_let
   endif
 
   if prevline =~ '\<rewrite\>\s\+.\+\<in\>\s*$'
-    return match(prevline, 'rewrite') + g:idris_indent_rewrite
+    return match(prevline, '\<rewrite\>') + g:idris_indent_rewrite
   endif
 
   if prevline !~ '\<else\>'
@@ -120,7 +120,7 @@ function! GetIdrisIndent()
   endif
 
   if prevline =~ '\<case\>\s\+.\+\<of\>\s*$'
-    return match(prevline, 'case') + g:idris_indent_case
+    return match(prevline, '\<case\>') + g:idris_indent_case
   endif
 
   if prevline =~ '^\s*\(\<namespace\>\|\<\(co\)\?data\>\)\s\+\S\+\s*$'
