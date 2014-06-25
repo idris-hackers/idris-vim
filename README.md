@@ -58,6 +58,39 @@ commands are supported.
 
 `<LocalLeader>h` show documentation
 
+## Configuration
+
+### Indentation
+
+To configure indentation in `idris-vim` you can use the following variables:
+
+* `let g:idris_indent_if = 3`
+
+        if bool
+        >>>then ...
+        >>>else ...
+  
+* `let g:idris_indent_case = 5`
+
+        case xs of
+        >>>>>[]      => ...
+        >>>>>(y::ys) => ...
+    
+* `let g:idris_indent_let = 4`
+
+        let x = 0 in
+        >>>>x
+  
+* `let g:idris_indent_where = 6`
+
+        where f : Int -> Int
+        >>>>>>f x = x
+  
+* `let g:idris_indent_do = 3`
+        
+        do x <- a
+        >>>y <- b
+
 
 [Idris]: http://www.idris-lang.org
 [Syntastic]: https://github.com/scrooloose/syntastic
