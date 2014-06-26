@@ -41,7 +41,10 @@ syn match idrisBacktick "`[A-Za-z][A-Za-z0-9_]*`"
 syn region idrisString start=+"+ skip=+\\\\\|\\"+ end=+"+
 syn region idrisBlockComment start="{-" end="-}" contains=idrisBlockComment,idrisTodo
 syn region idrisProofBlock start="\(default\s\+\)\?\(proof\|tactics\) *{" end="}" contains=idrisTactic
+syn match idrisIdentifier "^\s*[a-zA-z0-9_]*\('\)*" contained
+syn match idrisTopLevelDecl "^\s*[a-zA-z0-9_]*\('\)*\s\+:\s\+" contains=idrisIdentifier,idrisOperators
 
+highlight def link idrisIdentifier Identifier
 highlight def link idrisImport Structure
 highlight def link idrisModule Structure
 highlight def link idrisStructure Structure
