@@ -25,7 +25,7 @@ syn keyword idrisConditional if then else
 syn match idrisTactic contained "\<\(intros\?\|rewrite\|exact\|refine\|trivial\|let\|focus\|try\|compute\|solve\|attack\|reflect\|fill\|applyTactic\)\>"
 syn match idrisNumber "\<[0-9]\+\>\|\<0[xX][0-9a-fA-F]\+\>\|\<0[oO][0-7]\+\>"
 syn match idrisFloat "\<[0-9]\+\.[0-9]\+\([eE][-+]\=[0-9]\+\)\=\>"
-syn match idrisDelimiter  "(\|)\|\[\|\]\|,\|;\|{\|}"
+syn match idrisDelimiter  "[(),;[\]{}]"
 syn keyword idrisInfix prefix infix infixl infixr
 syn match idrisOperators "\([-!#$%&\*\+./<=>\?@\\^|~:]\|\<_\>\)"
 syn match idrisType "\<\([A-Z][a-zA-Z0-9_]*\|_|_\)\>"
