@@ -37,12 +37,12 @@ syn match idrisLink "%\(lib\|link\|include\)"
 syn match idrisDirective "%\(access\|assert_total\|default\|elim\|error_reverse\|hide\|name\|reflection\|error_handlers\|language\|flag\|dynamic\|provide\)"
 syn keyword idrisDSL lambda variable index_first index_next
 syn match idrisChar "'[^'\\]'\|'\\.'\|'\\u[0-9a-fA-F]\{4}'"
-syn match idrisBacktick "`[A-Za-z][A-Za-z0-9_]*`"
+syn match idrisBacktick "`[A-Za-z][A-Za-z0-9_]*\('\)*`"
 syn region idrisString start=+"+ skip=+\\\\\|\\"+ end=+"+
 syn region idrisBlockComment start="{-" end="-}" contains=idrisBlockComment,idrisTodo
 syn region idrisProofBlock start="\(default\s\+\)\?\(proof\|tactics\) *{" end="}" contains=idrisTactic
-syn match idrisIdentifier "^\s*[a-zA-z0-9_]*\('\)*" contained
-syn match idrisTopLevelDecl "^\s*[a-zA-z0-9_]*\('\)*\s\+:\s\+" contains=idrisIdentifier,idrisOperators
+syn match idrisIdentifier "^\s*[a-zA-Z][a-zA-z0-9_]*\('\)*" contained
+syn match idrisTopLevelDecl "^\s*[a-zA-Z][a-zA-z0-9_]*\('\)*\s\+:\s\+" contains=idrisIdentifier,idrisOperators
 
 highlight def link idrisIdentifier Identifier
 highlight def link idrisImport Structure
