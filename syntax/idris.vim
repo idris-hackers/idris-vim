@@ -30,16 +30,16 @@ syn keyword idrisInfix prefix infix infixl infixr
 syn match idrisOperators "\([-!#$%&\*\+./<=>\?@\\^|~:]\|\<_\>\)"
 syn match idrisType "\<\([A-Z][a-zA-Z0-9_]*\|_|_\)\>"
 syn keyword idrisTodo TODO FIXME XXX HACK contained
-syn match idrisLineComment "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=idrisTodo
-syn match idrisDocComment "|||\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=idrisTodo
+syn match idrisLineComment "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=idrisTodo,@Spell
+syn match idrisDocComment "|||\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=idrisTodo,@Spell
 syn match idrisMetaVar "?[a-z][A-Za-z0-9_]\+'*"
 syn match idrisLink "%\(lib\|link\|include\)"
 syn match idrisDirective "%\(access\|assert_total\|default\|elim\|error_reverse\|hide\|name\|reflection\|error_handlers\|language\|flag\|dynamic\|provide\)"
 syn keyword idrisDSL lambda variable index_first index_next
 syn match idrisChar "'[^'\\]'\|'\\.'\|'\\u[0-9a-fA-F]\{4}'"
 syn match idrisBacktick "`[A-Za-z][A-Za-z0-9_]*\('\)*`"
-syn region idrisString start=+"+ skip=+\\\\\|\\"+ end=+"+
-syn region idrisBlockComment start="{-" end="-}" contains=idrisBlockComment,idrisTodo
+syn region idrisString start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@Spell
+syn region idrisBlockComment start="{-" end="-}" contains=idrisBlockComment,idrisTodo,@Spell
 syn region idrisProofBlock start="\(default\s\+\)\?\(proof\|tactics\) *{" end="}" contains=idrisTactic
 syn match idrisIdentifier "^\s*[a-zA-Z][a-zA-z0-9_]*\('\)*" contained
 syn match idrisTopLevelDecl "^\s*[a-zA-Z][a-zA-z0-9_]*\('\)*\s\+:\s\+" contains=idrisIdentifier,idrisOperators
