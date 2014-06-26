@@ -70,7 +70,7 @@ highlight def link idrisDocComment Comment
 highlight def link idrisLineComment Comment
 highlight def link idrisBlockComment Comment
 highlight def link idrisTodo Todo
-highlight def link idrisMetaVar Identifier
+highlight def link idrisMetaVar Macro
 highlight def link idrisString String
 highlight def link idrisChar String
 highlight def link idrisBacktick Operator
