@@ -91,6 +91,14 @@ To configure indentation in `idris-vim` you can use the following variables:
         do x <- a
         >>>y <- b
 
+* `let g:idris_indent_rewrite = 8`
+
+        rewrite prf in expr
+        >>>>>>>>x
+  
+endif
+
+
 
 [Idris]: http://www.idris-lang.org
 [Syntastic]: https://github.com/scrooloose/syntastic
