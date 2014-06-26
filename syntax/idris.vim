@@ -12,21 +12,21 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syn match idrisModule "\<\(module\|namespace\)\>"
-syn match idrisImport "\<import\>"
-syn match idrisRefl "\<refl\>"
-syn match idrisStructure "\<\(class\|\(co\)\?data\|instance\|where\|record\|dsl\)\>"
-syn match idrisVisibility "\<\(public\|abstract\|private\)\>"
-syn match idrisBlock "\<\(parameters\|mutual\|postulate\|using\)\>"
-syn match idrisAnnotation "\<\(total\|partial\|covering\|auto\|impossible\|static\|implicit\)\>"
-syn match idrisStatement "\<\(do\|case\|of\|rewrite\|let\|in\|with\)\>"
+syn keyword idrisModule module namespace
+syn keyword idrisImport import
+syn keyword idrisRefl refl
+syn keyword idrisStructure class codata data instance where record dsl
+syn keyword idrisVisibility public abstract private
+syn keyword idrisBlock parameters mutual postulate using
+syn keyword idrisAnnotation total partial covering auto impossible static implicit
+syn keyword idrisStatement do case of rewrite let in with
 syn match idrisSyntax "\(pattern \+\|term \+\)\?syntax"
-syn match idrisConditional "\<\(if\|then\|else\)\>"
+syn keyword idrisConditional if then else
 syn match idrisTactic contained "\<\(intros\?\|rewrite\|exact\|refine\|trivial\|let\|focus\|try\|compute\|solve\|attack\|reflect\|fill\|applyTactic\)\>"
 syn match idrisNumber "\<[0-9]\+\>\|\<0[xX][0-9a-fA-F]\+\>\|\<0[oO][0-7]\+\>"
 syn match idrisFloat "\<[0-9]\+\.[0-9]\+\([eE][-+]\=[0-9]\+\)\=\>"
 syn match idrisDelimiter  "(\|)\|\[\|\]\|,\|;\|{\|}"
-syn match idrisInfix "\<\(prefix\|infix\|infixl\|infixr\)\>"
+syn keyword idrisInfix prefix infix infixl infixr
 syn match idrisOperators "\([-!#$%&\*\+./<=>\?@\\^|~:]\|\<_\>\)"
 syn match idrisType "\<\([A-Z][a-zA-Z0-9_]*\|_|_\)\>"
 syn keyword idrisTodo TODO FIXME XXX HACK contained
@@ -35,7 +35,7 @@ syn match idrisDocComment "|||\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=idri
 syn match idrisMetaVar "?[a-z][A-Za-z0-9_]\+'*"
 syn match idrisLink "%\(lib\|link\|include\)"
 syn match idrisDirective "%\(access\|assert_total\|default\|elim\|error_reverse\|hide\|name\|reflection\|error_handlers\|language\|flag\|dynamic\|provide\)"
-syn match idrisDSL "\(lambda\|variable\|\index_first\|index_next\)"
+syn keyword idrisDSL lambda variable index_first index_next
 syn match idrisChar "'[^'\\]'\|'\\.'\|'\\u[0-9a-fA-F]\{4}'"
 syn match idrisBacktick "`[A-Za-z][A-Za-z0-9_]*`"
 syn region idrisString start=+"+ skip=+\\\\\|\\"+ end=+"+
