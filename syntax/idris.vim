@@ -5,9 +5,7 @@
 "
 " author: raichoo (raichoo@googlemail.com)
 
-if version < 600
-  syn clear
-elseif exists("b:current_syntax")
+if exists("b:current_syntax")
   finish
 endif
 
