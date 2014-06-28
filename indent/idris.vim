@@ -3,7 +3,6 @@
 " Based on haskell indentation by motemen <motemen@gmail.com>
 "
 " author: raichoo (raichoo@googlemail.com)
-" date: Jun 18 2014
 "
 " Modify g:idris_indent_if and g:idris_indent_case to
 " change indentation for `if'(default 3) and `case'(default 5).
