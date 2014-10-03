@@ -95,8 +95,6 @@ To configure indentation in `idris-vim` you can use the following variables:
 
         rewrite prf in expr
         >>>>>>>>x
-  
-endif
 
 
 
