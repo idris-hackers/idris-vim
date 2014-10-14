@@ -43,7 +43,7 @@ All of the functions in idris-vim are essentially just calls back to the REPL,
 so documentation for each of them is also available there.
 
 IdrisResponseWin                                              *IdrisResponseWin*
-  This opens an idris response widow in a new pane.
+  This opens an idris response window in a new pane.
 
   Mapped to '<LocalLeader>_i' by default.
 
@@ -92,7 +92,7 @@ IdrisRefine:                                                      *IdrisRefine*
 IdrisProofSearch:                                             *IdrisProofSearch*
   This attempts to find a value for the metavariable it was called on by
   looking at the rest of the code.  It can also be called with hints, which
-  are functions that can can apply to help solve for the metavariable.
+  are functions that can apply to help solve for the metavariable.
 
   Mapped to '<LocalLeader>_o' without hints and '<LocalLeader>p' with hints by
   default
