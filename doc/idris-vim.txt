@@ -42,6 +42,11 @@ FUNCTIONS                                                 *idris-vim-functions*
 All of the functions in idris-vim are essentially just calls back to the REPL,
 so documentation for each of them is also available there.
 
+IdrisDocumentation                                           *IdrisDocumentation*
+  Shows internal documentation of the primitive under the cursor.
+
+  Mapped to '<LocalLeader>_h' by default.
+
 IdrisResponseWin                                              *IdrisResponseWin*
   This opens an idris response window in a new pane.
 
