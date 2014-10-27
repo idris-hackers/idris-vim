@@ -98,7 +98,7 @@ To configure indentation in `idris-vim` you can use the following variables:
 
 ### Concealing
 
-Concealing with unicode characters is on by default, but `let g:no_idris_conceal = 1` turns it off.
+Concealing with unicode characters is off by default, but `let g:idris_conceal = 1` turns it on.
 
 
 [Idris]: http://www.idris-lang.org

@@ -3,9 +3,9 @@
 "
 " It needs vim >= 7.3, set nocompatible, set enc=utf-8
 "
-" If you want to turn this off, let g:no_idris_conceal = 1
+" If you want to turn this on, let g:idris_conceal = 1
 
-if exists('g:no_idris_conceal') || !has('conceal') || &enc != 'utf-8'
+if !exists('g:idris_conceal') || !has('conceal') || &enc != 'utf-8'
     finish
 endif
 
