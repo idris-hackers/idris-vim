@@ -29,9 +29,9 @@ Be sure that the following lines are in your
 
 ## Features
 
-Apart from syntax highlighting and indentation idris-vim offers some neat interactive
-editing features. For more information on how to use it, read this blog article
-by Edwin Brady on [Interactive Idris editing with vim][].
+Apart from syntax highlighting, indentation, and unicode character concealing,
+idris-vim offers some neat interactive editing features. For more information on
+how to use it, read this blog article by Edwin Brady on [Interactive Idris editing with vim][].
 
 ## Interactive Editing Commands
 
@@ -69,25 +69,25 @@ To configure indentation in `idris-vim` you can use the following variables:
         if bool
         >>>then ...
         >>>else ...
-  
+
 * `let g:idris_indent_case = 5`
 
         case xs of
         >>>>>[]      => ...
         >>>>>(y::ys) => ...
-    
+
 * `let g:idris_indent_let = 4`
 
         let x = 0 in
         >>>>x
-  
+
 * `let g:idris_indent_where = 6`
 
         where f : Int -> Int
         >>>>>>f x = x
-  
+
 * `let g:idris_indent_do = 3`
-        
+
         do x <- a
         >>>y <- b
 
@@ -96,6 +96,9 @@ To configure indentation in `idris-vim` you can use the following variables:
         rewrite prf in expr
         >>>>>>>>x
 
+### Concealing
+
+Concealing with unicode characters is off by default, but `let g:idris_conceal = 1` turns it on.
 
 
 [Idris]: http://www.idris-lang.org

@@ -23,6 +23,7 @@ FEATURES                                                   *idris-vim-features*
 
   * Syntax Highlighting
   * Indentation
+  * Unicode Concealing
   * Syntax Checking (via Syntastic(https://github.com/scrooloose/syntastic))
   * Interactive Editing via the REPL
 
