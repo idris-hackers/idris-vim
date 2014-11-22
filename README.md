@@ -50,6 +50,8 @@ commands are supported.
 
 `<LocalLeader>e` evaluate expression
 
+`<LocalLeader>l` make lemma
+
 `<LocalLeader>m` add missing clause
 
 `<LocalLeader>o` obvious proof search

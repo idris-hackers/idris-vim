@@ -110,6 +110,12 @@ IdrisMakeWith:                                                   *IdrisMakeWith*
 
   Mapped to '<LocalLeader>_w' by default
 
+IdrisMakeLemma:                                                   *IdrisMakeLemma*
+  When the cursor is over a metavariable and this is called, it creates a new
+  top-level definition to solve the metavariable.
+
+  Mapped to '<LocalLeader>_l' by default
+
 ===============================================================================
 TROUBLESHOOTING                                      *idris-vim-troubleshooting*
 
