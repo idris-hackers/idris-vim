@@ -52,6 +52,8 @@ commands are supported.
 
 `<LocalLeader>m` add missing clause
 
+`<LocalLeader>o` obvious proof search
+
 `<LocalLeader>p` proof search
 
 `<LocalLeader>i` open idris response window
