@@ -42,7 +42,7 @@ commands are supported.
 
 `<LocalLeader>t` show type
 
-`<LocalLeader>d` add clause
+`<LocalLeader>d` add clause and `<LocalLeader>md` add proof clause
 
 `<LocalLeader>c` case split
 
