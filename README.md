@@ -54,6 +54,8 @@ commands are supported.
 
 `<LocalLeader>m` add missing clause
 
+`<LocalLeader>f` refine item
+
 `<LocalLeader>o` obvious proof search
 
 `<LocalLeader>p` proof search
