@@ -80,7 +80,8 @@ IdrisAddClause                                                 *IdrisAddClause*
   When the cursor is inside a top-level function type declaration and right of
   the ':', this creates a new clause for that function.
 
-  Mapped to '<LocalLeader>_d' by default
+  Mapped to '<LocalLeader>_d' for an ordinary clause and '<LocalLeader>_md' to
+  add a pattern-matching proof clause by default
 
 IdrisAddMissing:                                               *IdrisAddMissing*
   When the cursor is over a function, this adds all clauses necessary to make
@@ -108,6 +109,12 @@ IdrisMakeWith:                                                   *IdrisMakeWith*
   new with clause.
 
   Mapped to '<LocalLeader>_w' by default
+
+IdrisMakeLemma:                                                   *IdrisMakeLemma*
+  When the cursor is over a metavariable and this is called, it creates a new
+  top-level definition to solve the metavariable.
+
+  Mapped to '<LocalLeader>_l' by default
 
 ===============================================================================
 TROUBLESHOOTING                                      *idris-vim-troubleshooting*

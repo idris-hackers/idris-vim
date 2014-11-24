@@ -42,7 +42,7 @@ commands are supported.
 
 `<LocalLeader>t` show type
 
-`<LocalLeader>d` add clause
+`<LocalLeader>d` add clause and `<LocalLeader>md` add proof clause
 
 `<LocalLeader>c` case split
 
@@ -50,7 +50,11 @@ commands are supported.
 
 `<LocalLeader>e` evaluate expression
 
+`<LocalLeader>l` make lemma
+
 `<LocalLeader>m` add missing clause
+
+`<LocalLeader>f` refine item
 
 `<LocalLeader>o` obvious proof search
 
