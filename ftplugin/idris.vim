@@ -10,6 +10,7 @@ setlocal shiftwidth=2
 setlocal tabstop=2
 setlocal expandtab
 setlocal comments=s1:{-,mb:-,ex:-},:\|\|\|,:--
+setlocal commentstring=--%s
 
 let idris_response = 0
 let b:did_ftplugin = 1
