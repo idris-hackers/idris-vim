@@ -107,6 +107,19 @@ function! IdrisShowType()
   return tc
 endfunction
 
+let g:idrisFileLoaded = 0
+
+function IdrisTypeBalloon()
+  if (!g:idrisFileLoaded || &modified)
+    let tc = IdrisReload(1)
+    let g:idrisFileLoaded = 1
+  endif
+  return system("idris --client ':t " . v:beval_text . "'")
+endfunction
+
+set bexpr=IdrisTypeBalloon()
+set ballooneval
+
 function! IdrisShowDoc()
   w
   let word = expand("<cword>")
