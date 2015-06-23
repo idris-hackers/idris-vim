@@ -274,21 +274,21 @@ function! IdrisEval()
   endif
 endfunction
 
-map <LocalLeader>t :call IdrisShowType()<ENTER>
-map <LocalLeader>r :call IdrisReload(0)<ENTER>
-map <LocalLeader>c :call IdrisCaseSplit()<ENTER>
-map <LocalLeader>d 0:call search(":")<ENTER>b:call IdrisAddClause(0)<ENTER>w
-map <LocalLeader>b 0w:call IdrisAddClause(0)<ENTER>
-map <LocalLeader>m :call IdrisAddMissing()<ENTER>
-map <LocalLeader>md 0:call search(":")<ENTER>b:call IdrisAddClause(1)<ENTER>w
-map <LocalLeader>f :call IdrisRefine()<ENTER>
-map <LocalLeader>o :call IdrisProofSearch(0)<ENTER>
-map <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
-map <LocalLeader>l :call IdrisMakeLemma()<ENTER>
-map <LocalLeader>e :call IdrisEval()<ENTER>
-map <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
-map <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
-map <LocalLeader>h :call IdrisShowDoc()<ENTER>
+nnoremap <LocalLeader>t :call IdrisShowType()<ENTER>
+nnoremap <LocalLeader>r :call IdrisReload(0)<ENTER>
+nnoremap <LocalLeader>c :call IdrisCaseSplit()<ENTER>
+nnoremap <LocalLeader>d 0:call search(":")<ENTER>b:call IdrisAddClause(0)<ENTER>w
+nnoremap <LocalLeader>b 0w:call IdrisAddClause(0)<ENTER>
+nnoremap <LocalLeader>m :call IdrisAddMissing()<ENTER>
+nnoremap <LocalLeader>md 0:call search(":")<ENTER>b:call IdrisAddClause(1)<ENTER>w
+nnoremap <LocalLeader>f :call IdrisRefine()<ENTER>
+nnoremap <LocalLeader>o :call IdrisProofSearch(0)<ENTER>
+nnoremap <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
+nnoremap <LocalLeader>l :call IdrisMakeLemma()<ENTER>
+nnoremap <LocalLeader>e :call IdrisEval()<ENTER>
+nnoremap <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
+nnoremap <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
+nnoremap <LocalLeader>h :call IdrisShowDoc()<ENTER>
 
 menu Idris.Reload <LocalLeader>r
 menu Idris.Show\ Type <LocalLeader>t
