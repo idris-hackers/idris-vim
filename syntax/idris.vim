@@ -25,7 +25,7 @@ syn match idrisFloat "\<[0-9]\+\.[0-9]\+\([eE][-+]\=[0-9]\+\)\=\>"
 syn match idrisDelimiter  "[(),;[\]{}]"
 syn keyword idrisInfix prefix infix infixl infixr
 syn match idrisOperators "\([-!#$%&\*\+./<=>\?@\\^|~:]\|\<_\>\)"
-syn match idrisType "\<\([A-Z][a-zA-Z0-9_]*\|_|_\)\>"
+syn match idrisType "\<\([A-Z][a-zA-Z0-9_']*\|_|_\)\>"
 syn keyword idrisTodo TODO FIXME XXX HACK contained
 syn match idrisLineComment "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=idrisTodo,@Spell
 syn match idrisDocComment "|||\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=idrisTodo,@Spell
