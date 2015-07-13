@@ -70,7 +70,7 @@ endfunction
 
 function! IdrisReload(q)
   w
-  let file = expand("%:p")
+  let file = shellescape(expand("%:p"))
   let tc = system("idris --client ':l " . file . "'")
   if (! (tc is ""))
     call IWrite(tc)
@@ -85,7 +85,7 @@ endfunction
 
 function! IdrisReloadToLine(cline)
   w
-  let file = expand("%:p")
+  let file = shellescape(expand("%:p"))
   let tc = system("idris --client ':lto " . a:cline . " " . file . "'")
   if (! (tc is ""))
     call IWrite(tc)
@@ -95,7 +95,7 @@ endfunction
 
 function! IdrisShowType()
   w
-  let word = expand("<cword>")
+  let word = shellescape(expand("<cword>"))
   let cline = line(".")
   let tc = IdrisReloadToLine(cline)
   if (! (tc is ""))
@@ -109,7 +109,7 @@ endfunction
 
 function! IdrisShowDoc()
   w
-  let word = expand("<cword>")
+  let word = shellescape(expand("<cword>"))
   let ty = system("idris --client ':doc " . word . "'")
   call IWrite(ty)
 endfunction
@@ -118,7 +118,7 @@ function! IdrisProofSearch(hint)
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = expand("<cword>")
+  let word = shellescape(expand("<cword>"))
   let tc = IdrisReload(1)
 
   if (a:hint==0)
@@ -143,7 +143,7 @@ function! IdrisMakeLemma()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = expand("<cword>")
+  let word = shellescape(expand("<cword>"))
   let tc = IdrisReload(1)
 
   if (tc is "")
@@ -163,7 +163,7 @@ function! IdrisRefine()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = expand("<cword>")
+  let word = shellescape(expand("<cword>"))
   let tc = IdrisReload(1)
 
   let name = input ("Name: ")
@@ -184,7 +184,7 @@ function! IdrisAddMissing()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = expand("<cword>")
+  let word = shellescape(expand("<cword>"))
   let tc = IdrisReload(1)
 
   if (tc is "")
@@ -203,7 +203,7 @@ function! IdrisCaseSplit()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = expand("<cword>")
+  let word = shellescape(expand("<cword>"))
   let tc = IdrisReloadToLine(cline)
 
   if (tc is "")
@@ -222,7 +222,7 @@ function! IdrisMakeWith()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = expand("<cword>")
+  let word = shellescape(expand("<cword>"))
   let tc = IdrisReload(1)
 
   if (tc is "")
@@ -242,7 +242,7 @@ function! IdrisAddClause(proof)
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = expand("<cword>")
+  let word = shellescape(expand("<cword>"))
   let tc = IdrisReloadToLine(cline)
 
   if (tc is "")
