@@ -15,6 +15,11 @@ setlocal commentstring=--%s
 let idris_response = 0
 let b:did_ftplugin = 1
 
+function! s:IdrisCommand(...)
+  let idriscmd = shellescape(join(a:000))
+  return system("idris --client " . idriscmd)
+endfunction
+
 function! IdrisDocFold(lineNum)
   let line = getline(a:lineNum)
 
@@ -70,8 +75,8 @@ endfunction
 
 function! IdrisReload(q)
   w
-  let file = shellescape(expand("%:p"))
-  let tc = system("idris --client ':l " . file . "'")
+  let file = expand("%:p")
+  let tc = s:IdrisCommand(":l", file)
   if (! (tc is ""))
     call IWrite(tc)
   else
@@ -85,8 +90,8 @@ endfunction
 
 function! IdrisReloadToLine(cline)
   w
-  let file = shellescape(expand("%:p"))
-  let tc = system("idris --client ':lto " . a:cline . " " . file . "'")
+  let file = expand("%:p")
+  let tc = s:IdrisCommand(":lto", a:cline, file)
   if (! (tc is ""))
     call IWrite(tc)
   endif
@@ -95,13 +100,13 @@ endfunction
 
 function! IdrisShowType()
   w
-  let word = shellescape(expand("<cword>"))
+  let word = expand("<cword>")
   let cline = line(".")
   let tc = IdrisReloadToLine(cline)
   if (! (tc is ""))
     echo tc
   else
-    let ty = system("idris --client ':t " . word . "'")
+    let ty = s:IdrisCommand(":t", word)
     call IWrite(ty)
   endif
   return tc
@@ -109,8 +114,8 @@ endfunction
 
 function! IdrisShowDoc()
   w
-  let word = shellescape(expand("<cword>"))
-  let ty = system("idris --client ':doc " . word . "'")
+  let word = expand("<cword>")
+  let ty = s:IdrisCommand(":doc", word)
   call IWrite(ty)
 endfunction
 
@@ -118,7 +123,7 @@ function! IdrisProofSearch(hint)
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = shellescape(expand("<cword>"))
+  let word = expand("<cword>")
   let tc = IdrisReload(1)
 
   if (a:hint==0)
@@ -128,8 +133,7 @@ function! IdrisProofSearch(hint)
   endif
 
   if (tc is "")
-    let fn = "idris --client ':ps! " . cline . " " . word . " " . hints . "'"
-    let result = system(fn)
+    let result = s:IdrisCommand(":ps!", cline, word, hints)
     if (! (result is ""))
        call IWrite(result)
     else
@@ -143,12 +147,11 @@ function! IdrisMakeLemma()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = shellescape(expand("<cword>"))
+  let word = expand("<cword>")
   let tc = IdrisReload(1)
 
   if (tc is "")
-    let fn = "idris --client ':ml! " . cline . " " . word . "'"
-    let result = system(fn)
+    let result = s:IdrisCommand(":ml!", cline, word)
     if (! (result is ""))
        call IWrite(result)
     else
@@ -163,14 +166,13 @@ function! IdrisRefine()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = shellescape(expand("<cword>"))
+  let word = expand("<cword>")
   let tc = IdrisReload(1)
 
   let name = input ("Name: ")
 
   if (tc is "")
-    let fn = "idris --client ':ref! " . cline . " " . word . " " . name . "'"
-    let result = system(fn)
+    let result = s:IdrisCommand(":ref!", cline, word, name)
     if (! (result is ""))
        call IWrite(result)
     else
@@ -184,12 +186,11 @@ function! IdrisAddMissing()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = shellescape(expand("<cword>"))
+  let word = expand("<cword>")
   let tc = IdrisReload(1)
 
   if (tc is "")
-    let fn = "idris --client ':am! " . cline . " " . word . "'"
-    let result = system(fn)
+    let result = s:IdrisCommand(":am!", cline, word)
     if (! (result is ""))
        call IWrite(result)
     else
@@ -203,12 +204,11 @@ function! IdrisCaseSplit()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = shellescape(expand("<cword>"))
+  let word = expand("<cword>")
   let tc = IdrisReloadToLine(cline)
 
   if (tc is "")
-    let fn = "idris --client ':cs! " . cline . " " . word . "'"
-    let result = system(fn)
+    let result = s:IdrisCommand(":cs!", cline, word)
     if (! (result is ""))
        call IWrite(result)
     else
@@ -222,12 +222,11 @@ function! IdrisMakeWith()
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = shellescape(expand("<cword>"))
+  let word = expand("<cword>")
   let tc = IdrisReload(1)
 
   if (tc is "")
-    let fn = "idris --client ':mw! " . cline . " " . word . "'"
-    let result = system(fn)
+    let result = s:IdrisCommand(":mw!", cline, word)
     if (! (result is ""))
        call IWrite(result)
     else
@@ -242,17 +241,17 @@ function! IdrisAddClause(proof)
   let view = winsaveview()
   w
   let cline = line(".")
-  let word = shellescape(expand("<cword>"))
+  let word = expand("<cword>")
   let tc = IdrisReloadToLine(cline)
 
   if (tc is "")
     if (a:proof==0)
-      let fn = "idris --client ':ac! " . cline . " " . word . "'"
+      let fn = ":ac!"
     else
-      let fn = "idris --client ':apc! " . cline . " " . word . "'"
+      let fn = ":apc!"
     endif
 
-    let result = system(fn)
+    let result = s:IdrisCommand(fn, cline, word)
     if (! (result is ""))
        call IWrite(result)
     else
@@ -268,8 +267,7 @@ function! IdrisEval()
   let tc = IdrisReload(1)
   if (tc is "")
      let expr = input ("Expression: ")
-     let fn = "idris --client '" . expr . "'"
-     let result = system(fn)
+     let result = s:IdrisCommand(expr)
      call IWrite(" = " . result)
   endif
 endfunction
