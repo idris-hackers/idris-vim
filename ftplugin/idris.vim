@@ -74,7 +74,7 @@ function! IWrite(str)
 endfunction
 
 function! IdrisReload(q)
-  w
+  update
   let file = expand("%:p")
   let tc = s:IdrisCommand(":l", file)
   if (! (tc is ""))
@@ -89,7 +89,7 @@ function! IdrisReload(q)
 endfunction
 
 function! IdrisReloadToLine(cline)
-  w
+  update
   let file = expand("%:p")
   let tc = s:IdrisCommand(":lto", a:cline, file)
   if (! (tc is ""))
@@ -99,7 +99,6 @@ function! IdrisReloadToLine(cline)
 endfunction
 
 function! IdrisShowType()
-  w
   let word = expand("<cword>")
   let cline = line(".")
   let tc = IdrisReloadToLine(cline)
@@ -113,7 +112,7 @@ function! IdrisShowType()
 endfunction
 
 function! IdrisShowDoc()
-  w
+  update
   let word = expand("<cword>")
   let ty = s:IdrisCommand(":doc", word)
   call IWrite(ty)
@@ -121,7 +120,6 @@ endfunction
 
 function! IdrisProofSearch(hint)
   let view = winsaveview()
-  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -145,7 +143,6 @@ endfunction
 
 function! IdrisMakeLemma()
   let view = winsaveview()
-  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -164,7 +161,6 @@ endfunction
 
 function! IdrisRefine()
   let view = winsaveview()
-  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -184,7 +180,6 @@ endfunction
 
 function! IdrisAddMissing()
   let view = winsaveview()
-  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -202,7 +197,6 @@ endfunction
 
 function! IdrisCaseSplit()
   let view = winsaveview()
-  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReloadToLine(cline)
@@ -220,7 +214,6 @@ endfunction
 
 function! IdrisMakeWith()
   let view = winsaveview()
-  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -239,7 +232,6 @@ endfunction
 
 function! IdrisAddClause(proof)
   let view = winsaveview()
-  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReloadToLine(cline)
