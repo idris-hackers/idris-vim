@@ -230,8 +230,28 @@ function! IdrisMakeWith()
   endif
 endfunction
 
+function! IdrisMakeCase()
+  let view = winsaveview()
+  update
+  let cline = line(".")
+  let word = expand("<cword>")
+  let tc = IdrisReload(1)
+
+  if (tc is "")
+    let result = s:IdrisCommand(":mc!", cline, word)
+    if (! (result is ""))
+       call IWrite(result)
+    else
+      e
+      call winrestview(view)
+      call search("_")
+    endif
+  endif
+endfunction
+
 function! IdrisAddClause(proof)
   let view = winsaveview()
+  update
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReloadToLine(cline)
@@ -277,6 +297,7 @@ nnoremap <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
 nnoremap <LocalLeader>l :call IdrisMakeLemma()<ENTER>
 nnoremap <LocalLeader>e :call IdrisEval()<ENTER>
 nnoremap <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
+nnoremap <LocalLeader>mc :call IdrisMakeCase()<ENTER>
 nnoremap <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
 nnoremap <LocalLeader>h :call IdrisShowDoc()<ENTER>
 
