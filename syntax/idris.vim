@@ -31,7 +31,7 @@ syn match idrisLineComment "---*\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=id
 syn match idrisDocComment "|||\([^-!#$%&\*\+./<=>\?@\\^|~].*\)\?$" contains=idrisTodo,@Spell
 syn match idrisMetaVar "?[a-z][A-Za-z0-9_']*"
 syn match idrisLink "%\(lib\|link\|include\)"
-syn match idrisDirective "%\(access\|assert_total\|default\|elim\|error_reverse\|hide\|name\|reflection\|error_handlers\|language\|flag\|dynamic\|provide\)"
+syn match idrisDirective "%\(access\|assert_total\|default\|elim\|error_reverse\|hide\|name\|reflection\|error_handlers\|language\|flag\|dynamic\|provide\|inline\|used\|no_implicit\|hint\|extern\|unqualified\|error_handler\)"
 syn keyword idrisDSL lambda variable index_first index_next
 syn match idrisChar "'[^'\\]'\|'\\.'\|'\\u[0-9a-fA-F]\{4}'"
 syn match idrisBacktick "`[A-Za-z][A-Za-z0-9_]*\('\)*`"
