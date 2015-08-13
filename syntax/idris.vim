@@ -15,7 +15,7 @@ syn keyword idrisRefl refl
 syn keyword idrisStructure class codata data instance where record dsl
 syn keyword idrisVisibility public abstract private
 syn keyword idrisBlock parameters mutual postulate using
-syn keyword idrisAnnotation total partial covering auto impossible static implicit
+syn keyword idrisAnnotation total partial covering auto impossible static implicit constructor
 syn keyword idrisStatement do case of rewrite let in with
 syn match idrisSyntax "\(pattern \+\|term \+\)\?syntax"
 syn keyword idrisConditional if then else
