@@ -9,6 +9,8 @@ if exists("b:current_syntax")
   finish
 endif
 
+syn match idrisTopLevelDecl "\(\(total\|covering\|partial\|implicit\|where\|private\|public\|abstract\)\(\s\+\|\n\)\)\?[a-zA-Z][a-zA-z0-9_']*\s\+:\s\+"
+  \ contains=idrisIdentifier,idrisOperators,idrisTotality,idrisImplicit,idrisWhere,idrisVisibility
 syn keyword idrisModule module namespace
 syn keyword idrisImport import
 syn keyword idrisRefl refl
@@ -43,8 +45,6 @@ syn region idrisString start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@Spell
 syn region idrisBlockComment start="{-" end="-}" contains=idrisBlockComment,idrisTodo,@Spell
 syn region idrisProofBlock start="\(default\s\+\)\?\(proof\|tactics\) *{" end="}" contains=idrisTactic
 syn match idrisIdentifier "[a-zA-Z][a-zA-z0-9_']*" contained
-syn match idrisTopLevelDecl "^\s*\(\(total\|covering\|partial\|implicit\|where\|private\|public\|abstract\)\(\s\+\|\n\)\)\?[a-zA-Z][a-zA-z0-9_']*\s\+:\s\+"
-  \ contains=idrisIdentifier,idrisOperators,idrisTotality,idrisImplicit,idrisWhere,idrisVisibility
 
 highlight def link idrisIdentifier Identifier
 highlight def link idrisImport Structure
