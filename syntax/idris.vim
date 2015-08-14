@@ -9,8 +9,11 @@ if exists("b:current_syntax")
   finish
 endif
 
-syn match idrisTopLevelDecl "\(\(total\|covering\|partial\|implicit\|where\|private\|public\|abstract\)\(\s\+\|\n\)\)\?[a-zA-Z][a-zA-z0-9_']*\s\+:\s\+"
-  \ contains=idrisIdentifier,idrisOperators,idrisTotality,idrisImplicit,idrisWhere,idrisVisibility
+syn match idrisTypeDecl "[a-zA-Z][a-zA-z0-9_']*\s\+:\s\+"
+  \ contains=idrisIdentifier,idrisOperators
+syn region idrisParens matchgroup=idrisDelimiter start="(" end=")" contains=TOP,idrisTypeDecl
+syn region idrisBrackets matchgroup=idrisDelimiter start="\[" end="]" contains=TOP,idrisTypeDecl
+syn region idrisBlock matchgroup=idrisDelimiter start="{" end="}" contains=TOP,idrisTypeDecl
 syn keyword idrisModule module namespace
 syn keyword idrisImport import
 syn keyword idrisRefl refl
@@ -28,7 +31,7 @@ syn keyword idrisConditional if then else
 syn match idrisTactic contained "\<\(intros\?\|rewrite\|exact\|refine\|trivial\|let\|focus\|try\|compute\|solve\|attack\|reflect\|fill\|applyTactic\)\>"
 syn match idrisNumber "\<[0-9]\+\>\|\<0[xX][0-9a-fA-F]\+\>\|\<0[oO][0-7]\+\>"
 syn match idrisFloat "\<[0-9]\+\.[0-9]\+\([eE][-+]\=[0-9]\+\)\=\>"
-syn match idrisDelimiter  "[(),;[\]{}]"
+syn match idrisDelimiter  "[,;]"
 syn keyword idrisInfix prefix infix infixl infixr
 syn match idrisOperators "\([-!#$%&\*\+./<=>\?@\\^|~:]\|\<_\>\)"
 syn match idrisType "\<[A-Z][a-zA-Z0-9_']*\>"
