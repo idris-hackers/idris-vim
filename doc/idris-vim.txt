@@ -124,8 +124,9 @@ If this isn't working for you, make sure that:
 
   * There is an Idris REPL running
   * For syntax checking, you have syntastic installed
-  * The plugins mappings don't conflict with anything else installed (you can
-    use ':map' to check)
+  * The plugins mappings exists and don't conflict with anything else installed
+    (You can use ':map' to check. There should be mappings similar to
+    '\h * :call IdrisShowDoc()'.)
   * Vim recognizes you're in an idris file (you can use ':verb set ft' to check)
 
 If none of this works, check to issue tracker on github and if nothing is
