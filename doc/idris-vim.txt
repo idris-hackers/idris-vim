@@ -77,11 +77,12 @@ IdrisCaseSplit                                                 *IdrisCaseSplit*
   Mapped to '<LocalLeader>_c' by default
 
 IdrisAddClause                                                 *IdrisAddClause*
-  When the cursor is inside a top-level function type declaration and right of
-  the ':', this creates a new clause for that function.
+  When the cursor is at a type declaration this creates a new clause for that
+  signature.
 
-  Mapped to '<LocalLeader>_d' for an ordinary clause and '<LocalLeader>_md' to
-  add a pattern-matching proof clause by default
+  By default mapped to '<LocalLeader>_d' for an ordinary top-level definition,
+  '<LocalLeader>_b' for a typeclass instance definition, and
+  '<LocalLeader>_md' to add a pattern-matching proof clause.
 
 IdrisAddMissing:                                               *IdrisAddMissing*
   When the cursor is over a function, this adds all clauses necessary to make
