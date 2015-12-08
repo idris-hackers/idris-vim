@@ -50,6 +50,8 @@ commands are supported.
 
 `<LocalLeader>c` case split
 
+`<LocalLeader>mc` make case
+
 `<LocalLeader>w` add with clause
 
 `<LocalLeader>e` evaluate expression
