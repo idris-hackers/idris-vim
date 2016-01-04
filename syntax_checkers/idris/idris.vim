@@ -27,14 +27,16 @@ endif
 function! SyntaxCheckers_idris_idris_GetLocList() dict
     let makeprg = self.makeprgBuild({
         \ 'exe': 'idris',
-        \ 'args': '--client :l'. g:syntastic_idris_options,
+        \ 'args': "--client ':l". g:syntastic_idris_options,
+        \ 'post_args': "'",
         \ 'filetype': 'idris',
         \ 'subchecker': 'idris' })
 
     let errorformat =
         \ '"%f" (line %l\, column %c\):,' .
-        \ '%f\:%l\:%m,' .
-        \ 'user error (%f\:%l\:%m\)'
+        \ 'user error (%f\:%l\:%m\),' .
+        \ '%E%f\:%l\:%c\:,' .
+        \ '%m'
 
     return SyntasticMake({
         \ 'makeprg': makeprg,
