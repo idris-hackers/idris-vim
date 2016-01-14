@@ -17,7 +17,8 @@ syn region idrisBlock matchgroup=idrisDelimiter start="{" end="}" contains=TOP,i
 syn keyword idrisModule module namespace
 syn keyword idrisImport import
 syn keyword idrisRefl refl
-syn keyword idrisStructure class codata data instance record dsl
+syn keyword idrisDeprecated class instance
+syn keyword idrisStructure codata data record dsl interface implementation
 syn keyword idrisWhere where
 syn keyword idrisVisibility public abstract private
 syn keyword idrisBlock parameters mutual postulate using
@@ -49,6 +50,7 @@ syn region idrisBlockComment start="{-" end="-}" contains=idrisBlockComment,idri
 syn region idrisProofBlock start="\(default\s\+\)\?\(proof\|tactics\) *{" end="}" contains=idrisTactic
 syn match idrisIdentifier "[a-zA-Z][a-zA-z0-9_']*" contained
 
+highlight def link idrisDeprecated Error
 highlight def link idrisIdentifier Identifier
 highlight def link idrisImport Structure
 highlight def link idrisModule Structure
