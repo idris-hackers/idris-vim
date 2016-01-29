@@ -42,9 +42,15 @@ commands are supported.
 
 `<LocalLeader>t` show type
 
-`<LocalLeader>d` add clause and `<LocalLeader>md` add proof clause
+`<LocalLeader>d` Create an initial clause for a type declaration.
+
+`<LocalLeader>b` Same as \d but for an initial typeclass method impl.
+
+`<LocalLeader>md` Same as \d but for a proof clause
 
 `<LocalLeader>c` case split
+
+`<LocalLeader>mc` make case
 
 `<LocalLeader>w` add with clause
 
