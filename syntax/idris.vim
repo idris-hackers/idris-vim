@@ -12,8 +12,8 @@ endif
 syn keyword idrisModule module namespace
 syn keyword idrisImport import
 syn keyword idrisRefl refl
-syn keyword idrisStructure class codata data instance where record dsl
-syn keyword idrisVisibility public abstract private
+syn keyword idrisStructure class codata data instance interface implementation where record dsl
+syn keyword idrisVisibility public abstract private export
 syn keyword idrisBlock parameters mutual postulate using
 syn keyword idrisAnnotation total partial covering auto impossible static implicit
 syn keyword idrisStatement do case of rewrite let in with

@@ -74,7 +74,7 @@ function! IWrite(str)
 endfunction
 
 function! IdrisReload(q)
-  update
+  w
   let file = expand("%:p")
   let tc = s:IdrisCommand(":l", file)
   if (! (tc is ""))
@@ -89,7 +89,7 @@ function! IdrisReload(q)
 endfunction
 
 function! IdrisReloadToLine(cline)
-  update
+  w
   let file = expand("%:p")
   let tc = s:IdrisCommand(":lto", a:cline, file)
   if (! (tc is ""))
@@ -99,6 +99,7 @@ function! IdrisReloadToLine(cline)
 endfunction
 
 function! IdrisShowType()
+  w
   let word = expand("<cword>")
   let cline = line(".")
   let tc = IdrisReloadToLine(cline)
@@ -112,7 +113,7 @@ function! IdrisShowType()
 endfunction
 
 function! IdrisShowDoc()
-  update
+  w
   let word = expand("<cword>")
   let ty = s:IdrisCommand(":doc", word)
   call IWrite(ty)
@@ -120,6 +121,7 @@ endfunction
 
 function! IdrisProofSearch(hint)
   let view = winsaveview()
+  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -143,6 +145,7 @@ endfunction
 
 function! IdrisMakeLemma()
   let view = winsaveview()
+  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -161,6 +164,7 @@ endfunction
 
 function! IdrisRefine()
   let view = winsaveview()
+  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -180,6 +184,7 @@ endfunction
 
 function! IdrisAddMissing()
   let view = winsaveview()
+  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -214,6 +219,7 @@ endfunction
 
 function! IdrisMakeWith()
   let view = winsaveview()
+  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -232,7 +238,7 @@ endfunction
 
 function! IdrisMakeCase()
   let view = winsaveview()
-  update
+  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReload(1)
@@ -251,7 +257,7 @@ endfunction
 
 function! IdrisAddClause(proof)
   let view = winsaveview()
-  update
+  w
   let cline = line(".")
   let word = expand("<cword>")
   let tc = IdrisReloadToLine(cline)
@@ -276,6 +282,7 @@ function! IdrisAddClause(proof)
 endfunction
 
 function! IdrisEval()
+  w
   let tc = IdrisReload(1)
   if (tc is "")
      let expr = input ("Expression: ")
@@ -288,7 +295,7 @@ nnoremap <LocalLeader>t :call IdrisShowType()<ENTER>
 nnoremap <LocalLeader>r :call IdrisReload(0)<ENTER>
 nnoremap <LocalLeader>c :call IdrisCaseSplit()<ENTER>
 nnoremap <LocalLeader>d 0:call search(":")<ENTER>b:call IdrisAddClause(0)<ENTER>w
-nnoremap <LocalLeader>b 0w:call IdrisAddClause(0)<ENTER>
+nnoremap <LocalLeader>b 0:call IdrisAddClause(0)<ENTER>
 nnoremap <LocalLeader>m :call IdrisAddMissing()<ENTER>
 nnoremap <LocalLeader>md 0:call search(":")<ENTER>b:call IdrisAddClause(1)<ENTER>w
 nnoremap <LocalLeader>f :call IdrisRefine()<ENTER>
