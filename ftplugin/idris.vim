@@ -89,13 +89,14 @@ function! IdrisReload(q)
 endfunction
 
 function! IdrisReloadToLine(cline)
-  w
-  let file = expand("%:p")
-  let tc = s:IdrisCommand(":lto", a:cline, file)
-  if (! (tc is ""))
-    call IWrite(tc)
-  endif
-  return tc
+  return IdrisReload(1)
+  "w
+  "let file = expand("%:p")
+  "let tc = s:IdrisCommand(":lto", a:cline, file)
+  "if (! (tc is ""))
+  "  call IWrite(tc)
+  "endif
+  "return tc
 endfunction
 
 function! IdrisShowType()
