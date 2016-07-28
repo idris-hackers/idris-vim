@@ -57,7 +57,7 @@ function! IdrisHideResponseWin()
   let g:idris_respwin = "hidden"
 endfunction
 
-function! IdrisShowRepsonseWin()
+function! IdrisShowResponseWin()
   let g:idris_respwin = "active"
 endfunction
 
@@ -321,4 +321,4 @@ menu Idris.Proof\ Search <LocalLeader>o
 menu Idris.Proof\ Search\ with\ hints <LocalLeader>p
 
 au BufHidden idris-response call IdrisHideResponseWin()
-au BufEnter idris-response call IdrisShowRepsonseWin()
+au BufEnter idris-response call IdrisShowResponseWin()
