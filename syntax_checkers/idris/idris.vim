@@ -23,6 +23,14 @@ if !exists("g:syntastic_idris_options")
     let g:syntastic_idris_options = " "
 endif
 
+function! FixLeadingComments(errors) abort
+    echo a:errors
+    return map(copy(a:errors), 'substitute(v:val, "\\v^\\|\\| ", "", "")')
+endfunction
+
+function! TestPost(errors) abort
+    echo a:errors
+endfunction
 
 function! SyntaxCheckers_idris_idris_GetLocList() dict
     let makeprg = self.makeprgBuild({
@@ -35,12 +43,14 @@ function! SyntaxCheckers_idris_idris_GetLocList() dict
     let errorformat =
         \ '"%f" (line %l\, column %c\):,' .
         \ 'user error (%f\:%l\:%m\),' .
-        \ '%E%f\:%l\:%c\:,' .
-        \ '%m'
+        \ '%E%f:%l:%c: error: %m,' .
+        \ '%W%f:%l:%c: warning: %m,' .
+        \ '%C%m'
 
     return SyntasticMake({
         \ 'makeprg': makeprg,
-        \ 'errorformat': errorformat })
+        \ 'errorformat': errorformat,
+        \ 'postprocess': ['compressWhitespace'] })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({
