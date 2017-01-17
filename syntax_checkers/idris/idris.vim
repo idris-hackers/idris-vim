@@ -23,7 +23,6 @@ if !exists("g:syntastic_idris_options")
     let g:syntastic_idris_options = " "
 endif
 
-
 function! SyntaxCheckers_idris_idris_GetLocList() dict
     let makeprg = self.makeprgBuild({
         \ 'exe': 'idris',
@@ -35,12 +34,15 @@ function! SyntaxCheckers_idris_idris_GetLocList() dict
     let errorformat =
         \ '"%f" (line %l\, column %c\):,' .
         \ 'user error (%f\:%l\:%m\),' .
-        \ '%E%f\:%l\:%c\:,' .
+        \ '%E%f:%l:%c: error: %m,' .
+        \ '%W%f:%l:%c: warning: %m,' .
+        \ '%C%m,' .
         \ '%m'
 
     return SyntasticMake({
         \ 'makeprg': makeprg,
-        \ 'errorformat': errorformat })
+        \ 'errorformat': errorformat,
+        \ 'postprocess': ['compressWhitespace'] })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({
