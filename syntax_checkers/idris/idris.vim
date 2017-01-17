@@ -36,7 +36,8 @@ function! SyntaxCheckers_idris_idris_GetLocList() dict
         \ 'user error (%f\:%l\:%m\),' .
         \ '%E%f:%l:%c: error: %m,' .
         \ '%W%f:%l:%c: warning: %m,' .
-        \ '%C%m'
+        \ '%C%m,' .
+        \ '%m'
 
     return SyntasticMake({
         \ 'makeprg': makeprg,
