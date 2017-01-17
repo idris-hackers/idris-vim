@@ -23,15 +23,6 @@ if !exists("g:syntastic_idris_options")
     let g:syntastic_idris_options = " "
 endif
 
-function! FixLeadingComments(errors) abort
-    echo a:errors
-    return map(copy(a:errors), 'substitute(v:val, "\\v^\\|\\| ", "", "")')
-endfunction
-
-function! TestPost(errors) abort
-    echo a:errors
-endfunction
-
 function! SyntaxCheckers_idris_idris_GetLocList() dict
     let makeprg = self.makeprgBuild({
         \ 'exe': 'idris',
