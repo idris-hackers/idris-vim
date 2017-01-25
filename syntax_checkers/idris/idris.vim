@@ -35,8 +35,11 @@ function! SyntaxCheckers_idris_idris_GetLocList() dict
         \ '"%f" (line %l\, column %c\):,' .
         \ 'user error (%f\:%l\:%m\),' .
         \ '%E%f:%l:%c: error: %m,' .
+        \ '%E%f:%l:%c-%*[0-9]: error: %m,' .
         \ '%W%f:%l:%c: warning: %m,' .
+        \ '%W%f:%l:%c-%*[0-9]: warning: %m,' .
         \ '%E%f:%l:%c:%m,' .
+        \ '%E%f:%l:%c-%*[0-9]:%m,' .
         \ '%C%m,' .
         \ '%m'
 
