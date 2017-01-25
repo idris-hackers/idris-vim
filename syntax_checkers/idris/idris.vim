@@ -36,6 +36,7 @@ function! SyntaxCheckers_idris_idris_GetLocList() dict
         \ 'user error (%f\:%l\:%m\),' .
         \ '%E%f:%l:%c: error: %m,' .
         \ '%W%f:%l:%c: warning: %m,' .
+        \ '%E%f:%l:%c:%m,' .
         \ '%C%m,' .
         \ '%m'
 
