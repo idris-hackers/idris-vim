@@ -8,7 +8,9 @@ endif
 
 setlocal shiftwidth=2
 setlocal tabstop=2
-setlocal expandtab
+if !exists("g:idris_allow_tabchar") || g:idris_allow_tabchar == 0
+	setlocal expandtab
+endif
 setlocal comments=s1:{-,mb:-,ex:-},:\|\|\|,:--
 setlocal commentstring=--%s
 
