@@ -112,6 +112,10 @@ To configure indentation in `idris-vim` you can use the following variables:
 
 Concealing with unicode characters is off by default, but `let g:idris_conceal = 1` turns it on.
 
+### Tab Characters
+
+If you simply must use tab characters, and would prefer that the ftplugin not set expandtab add `let g:idris_allow_tabchar = 1`.
+
 
 [Idris]: http://www.idris-lang.org
 [Syntastic]: https://github.com/scrooloose/syntastic
