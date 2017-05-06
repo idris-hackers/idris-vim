@@ -8,10 +8,13 @@ endif
 
 setlocal shiftwidth=2
 setlocal tabstop=2
-setlocal expandtab
+if !exists("g:idris_allow_tabchar") || g:idris_allow_tabchar == 0
+	setlocal expandtab
+endif
 setlocal comments=s1:{-,mb:-,ex:-},:\|\|\|,:--
 setlocal commentstring=--%s
 setlocal iskeyword+=?
+setlocal wildignore+=*.ibc
 
 let idris_response = 0
 let b:did_ftplugin = 1
