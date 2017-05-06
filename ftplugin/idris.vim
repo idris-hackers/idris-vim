@@ -11,6 +11,7 @@ setlocal tabstop=2
 setlocal expandtab
 setlocal comments=s1:{-,mb:-,ex:-},:\|\|\|,:--
 setlocal commentstring=--%s
+setlocal iskeyword+=?
 
 let idris_response = 0
 let b:did_ftplugin = 1
