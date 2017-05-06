@@ -13,6 +13,7 @@ if !exists("g:idris_allow_tabchar") || g:idris_allow_tabchar == 0
 endif
 setlocal comments=s1:{-,mb:-,ex:-},:\|\|\|,:--
 setlocal commentstring=--%s
+setlocal iskeyword+=?
 setlocal wildignore+=*.ibc
 
 let idris_response = 0
