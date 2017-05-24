@@ -106,6 +106,10 @@ endfunction
 function! IdrisShowType()
   w
   let word = expand("<cword>")
+  if word =~ '^?'
+    " Cut off '?' that introduces a hole identifier.
+    let word = strpart(word, 1)
+  endif
   let cline = line(".")
   let tc = IdrisReloadToLine(cline)
   if (! (tc is ""))
