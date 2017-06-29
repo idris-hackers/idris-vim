@@ -58,6 +58,7 @@ if s:extraConceal
     syntax match idrNiceOperator "=\zs<<" conceal cchar=«
 
     syntax match idrNiceOperator "++" conceal cchar=⧺
+    syntax match idrNiceOperator "::" conceal cchar=∷
     syntax match idrNiceOperator "-<" conceal cchar=↢
     syntax match idrNiceOperator ">-" conceal cchar=↣
     syntax match idrNiceOperator "-<<" conceal cchar=⤛
