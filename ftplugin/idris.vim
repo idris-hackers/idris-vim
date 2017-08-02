@@ -79,11 +79,13 @@ endfunction
 
 function! IWrite(str)
   if (bufexists("idris-response"))
+    let save_cursor = getcurpos()
     b idris-response
     %delete
     let resp = split(a:str, '\n')
     call append(1, resp)
     b #
+    call setpos('.', save_cursor)
   else
     echo a:str
   endif
