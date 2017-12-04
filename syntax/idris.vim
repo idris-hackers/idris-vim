@@ -25,7 +25,7 @@ syn keyword idrisBlock parameters mutual postulate using
 syn keyword idrisTotality total partial covering
 syn keyword idrisImplicit implicit
 syn keyword idrisAnnotation auto impossible static constructor
-syn keyword idrisStatement do case of rewrite with
+syn keyword idrisStatement do case of rewrite with proof
 syn keyword idrisLet let in
 syn match idrisSyntax "\(pattern \+\|term \+\)\?syntax"
 syn keyword idrisConditional if then else
