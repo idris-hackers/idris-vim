@@ -310,22 +310,24 @@ function! IdrisEval()
   endif
 endfunction
 
-nnoremap <buffer> <silent> <LocalLeader>t :call IdrisShowType()<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>r :call IdrisReload(0)<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>c :call IdrisCaseSplit()<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>d 0:call search(":")<ENTER>b:call IdrisAddClause(0)<ENTER>w
-nnoremap <buffer> <silent> <LocalLeader>b 0:call IdrisAddClause(0)<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>m :call IdrisAddMissing()<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>md 0:call search(":")<ENTER>b:call IdrisAddClause(1)<ENTER>w
-nnoremap <buffer> <silent> <LocalLeader>f :call IdrisRefine()<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>o :call IdrisProofSearch(0)<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>l :call IdrisMakeLemma()<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>e :call IdrisEval()<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>mc :call IdrisMakeCase()<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
-nnoremap <buffer> <silent> <LocalLeader>h :call IdrisShowDoc()<ENTER>
+if g:idris_vim_enable_keymappings_by_default
+  nnoremap <buffer> <silent> <LocalLeader>t :call IdrisShowType()<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>r :call IdrisReload(0)<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>c :call IdrisCaseSplit()<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>d 0:call search(":")<ENTER>b:call IdrisAddClause(0)<ENTER>w
+  nnoremap <buffer> <silent> <LocalLeader>b 0:call IdrisAddClause(0)<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>m :call IdrisAddMissing()<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>md 0:call search(":")<ENTER>b:call IdrisAddClause(1)<ENTER>w
+  nnoremap <buffer> <silent> <LocalLeader>f :call IdrisRefine()<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>o :call IdrisProofSearch(0)<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>p :call IdrisProofSearch(1)<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>l :call IdrisMakeLemma()<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>e :call IdrisEval()<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>mc :call IdrisMakeCase()<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
+  nnoremap <buffer> <silent> <LocalLeader>h :call IdrisShowDoc()<ENTER>
+endif
 
 menu Idris.Reload <LocalLeader>r
 menu Idris.Show\ Type <LocalLeader>t
