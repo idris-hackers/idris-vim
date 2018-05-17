@@ -138,6 +138,13 @@ function! IdrisShowDoc()
   call IWrite(ty)
 endfunction
 
+function! IdrisShowCore()
+  w
+  let word = expand("<cword>")
+  let ty = s:IdrisCommand(":core", word)
+  call IWrite(ty)
+endfunction
+
 function! IdrisProofSearch(hint)
   let view = winsaveview()
   w
@@ -326,6 +333,7 @@ nnoremap <buffer> <silent> <LocalLeader>w 0:call IdrisMakeWith()<ENTER>
 nnoremap <buffer> <silent> <LocalLeader>mc :call IdrisMakeCase()<ENTER>
 nnoremap <buffer> <silent> <LocalLeader>i 0:call IdrisResponseWin()<ENTER>
 nnoremap <buffer> <silent> <LocalLeader>h :call IdrisShowDoc()<ENTER>
+nnoremap <buffer> <silent> <LocalLeader>cr :call IdrisShowCore()<ENTER>
 
 menu Idris.Reload <LocalLeader>r
 menu Idris.Show\ Type <LocalLeader>t
