@@ -93,4 +93,7 @@ highlight def link idrisChar String
 highlight def link idrisBacktick Operator
 highlight def link hsSpecialChar SpecialChar
 
+syn sync ccomment idrisDocComment,idrisLineComment,idrisBlockComment minlines=100
+"syn sync fromstart
+
 let b:current_syntax = "idris"
