@@ -45,7 +45,12 @@ syn match idrisDirective "%\(access\|assert_total\|default\|elim\|error_reverse\
 syn keyword idrisDSL lambda variable index_first index_next
 syn match idrisChar "'[^'\\]'\|'\\.'\|'\\u[0-9a-fA-F]\{4}'"
 syn match idrisBacktick "`[A-Za-z][A-Za-z0-9_']*`"
-syn region idrisString start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@Spell
+
+syn region idrisString start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=@Spell,hsSpecialChar
+syn region idrisVerbatimString start=/"""/ end=/"""/ contains=@Spell fold
+syn match hsSpecialChar contained "\\\([0-9]\+\|o[0-7]\+\|x[0-9a-fA-F]\+\|[\"\\'&\\abfnrtv]\|^[A-Z^_\[\\\]]\)"
+syn match hsSpecialChar contained "\\\(NUL\|SOH\|STX\|ETX\|EOT\|ENQ\|ACK\|BEL\|BS\|HT\|LF\|VT\|FF\|CR\|SO\|SI\|DLE\|DC1\|DC2\|DC3\|DC4\|NAK\|SYN\|ETB\|CAN\|EM\|SUB\|ESC\|FS\|GS\|RS\|US\|SP\|DEL\)"
+
 syn region idrisBlockComment start="{-" end="-}" contains=idrisBlockComment,idrisTodo,@Spell
 syn region idrisProofBlock start="\(default\s\+\)\?\(proof\|tactics\) *{" end="}" contains=idrisTactic
 syn match idrisIdentifier "[a-zA-Z][a-zA-z0-9_']*" contained
@@ -83,7 +88,12 @@ highlight def link idrisBlockComment Comment
 highlight def link idrisTodo Todo
 highlight def link idrisMetaVar Macro
 highlight def link idrisString String
+highlight def link idrisVerbatimString String
 highlight def link idrisChar String
 highlight def link idrisBacktick Operator
+highlight def link hsSpecialChar SpecialChar
+
+syn sync ccomment idrisDocComment,idrisLineComment,idrisBlockComment minlines=100
+"syn sync fromstart
 
 let b:current_syntax = "idris"
