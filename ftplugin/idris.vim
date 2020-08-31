@@ -33,7 +33,7 @@ endfunction
 
 function! s:IdrisCommand(...)
   let idriscmd = shellescape(join(a:000))
-  return system("idris --client " . idriscmd)
+  return system("idris2 --client " . idriscmd)
 endfunction
 
 function! IdrisDocFold(lineNum)
